@@ -35,7 +35,7 @@ const appSlice = createSlice({
         ...state.identity,
         ...action.payload
       }
-    },: 
+    },
   },
 });
 

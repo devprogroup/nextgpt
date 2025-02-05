@@ -3,13 +3,14 @@
 import { setStep } from "@/store/agent";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { setTask } from "@/store/agent";
 
 export default function Task(){
     const dispatch = useDispatch()
     const task = useSelector((state:any)=>state.agent.task)
     const setTaskValue = (key: string, value: any) => {
-            dispatch(setIdentity({ [key]: value }))
-        }
+        dispatch(setTask({ [key]: value }))
+    }
     useEffect(()=>{
         dispatch(setStep(1))
     },[])
@@ -20,10 +21,10 @@ export default function Task(){
                         What organization does your agent work at?
                     </label>
                     <input
-                        id="organization"
+                        id="purpose"
                         className="nextgpt__input"
                         value={task.purpose}
-                        onChange={(e) => setTaskValue('organization', e.target.value)}
+                        onChange={(e) => setTaskValue('purpose', e.target.value)}
                     />
                 </div>
         </div>
