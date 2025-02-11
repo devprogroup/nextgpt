@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation"
 export default function Home () {
     const router = useRouter()
     useEffect(()=>{
-        router.push("/agent/identity")
+        router.push("/create-agent")
     }, [])
     return <div></div>
 }

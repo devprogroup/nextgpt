@@ -36,5 +36,32 @@ body {
   @apply text-3xl font-semibold
 }
 .nextgpt__agent_subtitle {
-  @apply text-gray-500
+  @apply nextgpt__text-muted
+}
+.nextgpt__form-group {
+  @apply space-y-2
+}
+.nextgpt__form-container {
+  @apply space-y-8
+}
+.nextgpt__agent_border {
+  @apply border border-gray-300
+}
+.nextgpt__text-muted {
+  color: #525866;
+}
+.nextgpt__text-main {
+  color: #0A0D14
+}
+
+.nextgpt__text-secondary {
+  color: #008F82
+}
+
+.nextgpt__agent_btn-primary {
+  @apply bg-gray-100 px-3 py-1 rounded-lg nextgpt__agent_border
+}
+
+.nextgpt__agent_btn-secondary {
+  @apply bg-white px-3 py-1 rounded-lg nextgpt__agent_border nextgpt__text-muted
 }

@@ -1,18 +1,13 @@
 "use client"
 import React from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { FaTimes } from 'react-icons/fa'
-const STEPS = [
-    'identity',
-    'task',
-    'not implemented',
-    'not implemented',
-    'not implemented',
-    'not implemented',
-]
-
+import { STEPS } from "@/constants"
+import { setStep } from "@/store/agent"
 export default function ProgressHeader() {
     const step = useSelector((state:any)=>state.agent.step)
+    const dispatch = useDispatch()
+
     return (
         <div className="screen-x-padding py-5 border-b border-gray-200">
             <div className="flex items-center justify-center relative">
@@ -20,9 +15,11 @@ export default function ProgressHeader() {
                 <div className="flex items-center">
                     {
                         STEPS.map((it, i)=>(
-                            <div className={`rounded-full flex items-center mx-2 ${step === i ? 'bg-gray-100' : 'border border-gray-200'} p-2`} key={i}>
+                            <div
+                                onClick={()=>dispatch(setStep(i))}
+                                className={`cursor-pointer rounded-full flex items-center mx-2 ${step === i ? 'bg-gray-100' : 'border border-gray-200'} p-2`} key={i}>
                                 <span className="h-5 text-sm w-5 flex justify-center items-center bg-gray-400 text-white rounded-full">{i+1}</span>
-                                { step === i && <span className="block mx-1 capitalize">{it}</span>}
+                                { step === i && <span className="block mx-1 capitalize">{it.key}</span>}
                             </div>
                         ))
                     }
