@@ -4,6 +4,7 @@ import BottomNav from "@/components/create-agent/common/bottom-nav";
 import { setKnowledge } from "@/store/agent";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import SubscriptionModal from "./subscription-modal";
 const PARAMETERS = [
     {
         key: "limit_to_provided_knowledge",
@@ -22,6 +23,8 @@ const ALTERNATIVES = ['Escalate', 'Offer alternative', 'Other']
 
 export default function Knowledge(){
     const knowledge = useSelector((state:any) => state.agent.knowledge)
+    const [showSubscriptionModal, setShowSubscriptionModal] = React.useState(true);
+
     const dispatch = useDispatch()
     const setKnowledgeValue = (key: string, value: string) => {
         dispatch(setKnowledge({ [key]: value }))
@@ -45,7 +48,7 @@ export default function Knowledge(){
                     <div id="topic" className="nextgpt__agent_border border-dashed py-6 rounded-md text-center">
                         <p className="text-center font-semibold">Add your first knowledge source</p>
                         <p className="nextgpt__agent_text-muted mb-6">Give your agent more context and resource to handle tasks.</p>
-                        <button className="bg-gray-200 py-1 px-3 rounded-lg">New knowledge</button>
+                        <button className="bg-gray-200 py-1 px-3 rounded-lg" onClick={()=>{setShowSubscriptionModal(true)}}>New knowledge</button>
                     </div>
                 </div>
                 <div className="nextgpt__form-group">
@@ -90,6 +93,7 @@ export default function Knowledge(){
                     </div>
                 </div>
             </div>
+            <SubscriptionModal isOpen={showSubscriptionModal} close={() => setShowSubscriptionModal(false)} />
         </div>
     )
 }

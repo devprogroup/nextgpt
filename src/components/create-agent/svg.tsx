@@ -1,7 +1,11 @@
 "use client";
 
 import React from "react";
-
+interface PropType {
+    width?: number,
+    height?: number,
+    fill?: string
+}
 export const Circuit = ({
     width = 42,
     height = 42,
@@ -212,4 +216,45 @@ export const HeadPhone = ({
             </linearGradient>
         </defs>
     </svg>
+)
+
+export const SubscriptionIcon = ({width=18, height=18, fill= "none"}:PropType) => (
+    <svg width={width} height={height} viewBox="0 0 18 18" fill={fill} xmlns="http://www.w3.org/2000/svg">
+        <g filter="url(#filter0_ddd_5011_17260)">
+            <path d="M8.50633 1.45313C8.22726 1.37485 7.93313 1.33301 7.62962 1.33301C6.23029 1.33301 5.03907 2.21951 4.58513 3.461C3.29548 3.7549 2.33333 4.90816 2.33333 6.28671C2.33333 6.92741 2.54163 7.51994 2.89357 7.99967C2.54163 8.47941 2.33333 9.07194 2.33333 9.71261C2.33333 10.8395 2.97629 11.8151 3.91382 12.2945C4.41047 13.677 5.73263 14.6663 7.28704 14.6663C7.71933 14.6663 8.13427 14.5896 8.51847 14.449C8.50647 14.406 8.5 14.3606 8.5 14.3138V11.3347V11.333C8.5 10.4125 7.7538 9.66634 6.83333 9.66634C6.55719 9.66634 6.33333 9.44247 6.33333 9.16634C6.33333 8.89021 6.55719 8.66634 6.83333 8.66634C7.46396 8.66634 8.04347 8.88527 8.5 9.25121V4.66633V4.665V1.533C8.5 1.50581 8.5022 1.47913 8.50633 1.45313Z" fill="white" />
+            <path d="M9.48161 14.449C9.86581 14.5896 10.2807 14.6663 10.713 14.6663C12.2675 14.6663 13.5896 13.677 14.0863 12.2945C15.0238 11.8151 15.6667 10.8395 15.6667 9.71261C15.6667 9.07194 15.4585 8.47941 15.1065 7.99967C15.4585 7.51994 15.6667 6.92741 15.6667 6.28671C15.6667 4.90816 14.7046 3.7549 13.4149 3.461C12.961 2.21951 11.7698 1.33301 10.3705 1.33301C10.0669 1.33301 9.77281 1.37485 9.49374 1.45313C9.49788 1.47913 9.50008 1.50581 9.50008 1.533V4.66877C9.50141 5.58813 10.2471 6.333 11.1667 6.333C11.4429 6.333 11.6667 6.55686 11.6667 6.83301C11.6667 7.10914 11.4429 7.33301 11.1667 7.33301C10.5361 7.33301 9.95661 7.11407 9.50008 6.74814V14.3138C9.50008 14.3606 9.49361 14.406 9.48161 14.449Z" fill="white" />
+        </g>
+        <defs>
+            <filter id="filter0_ddd_5011_17260" x="-1" y="0" width="20" height="20" filterUnits="userSpaceOnUse" colorInterpolationFilters="sRGB">
+                <feFlood floodOpacity="0" result="BackgroundImageFix" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feMorphology radius="2" operator="erode" in="SourceAlpha" result="effect1_dropShadow_5011_17260" />
+                <feOffset dy="2" />
+                <feGaussianBlur stdDeviation="2" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.1 0" />
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5011_17260" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feMorphology radius="1" operator="erode" in="SourceAlpha" result="effect2_dropShadow_5011_17260" />
+                <feOffset dy="1" />
+                <feGaussianBlur stdDeviation="1" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
+                <feBlend mode="normal" in2="effect1_dropShadow_5011_17260" result="effect2_dropShadow_5011_17260" />
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
+                <feMorphology radius="1" operator="erode" in="SourceAlpha" result="effect3_dropShadow_5011_17260" />
+                <feOffset dy="0.5" />
+                <feGaussianBlur stdDeviation="0.5" />
+                <feColorMatrix type="matrix" values="0 0 0 0 0.0627451 0 0 0 0 0.0941176 0 0 0 0 0.156863 0 0 0 0.05 0" />
+                <feBlend mode="normal" in2="effect2_dropShadow_5011_17260" result="effect3_dropShadow_5011_17260" />
+                <feBlend mode="normal" in="SourceGraphic" in2="effect3_dropShadow_5011_17260" result="shape" />
+            </filter>
+        </defs>
+    </svg>
+
+)
+
+export const ChunkingStrategy = ({width=18, height=18, fill= "none"}:PropType) => (
+    <svg width={width} height={height} viewBox="0 0 16 17" fill={fill} xmlns="http://www.w3.org/2000/svg">
+        <path fillRule="evenodd" clipRule="evenodd" d="M7.99992 1.99316C8.27605 1.99316 8.49992 2.21702 8.49992 2.49316V14.8265C8.49992 15.1026 8.27605 15.3265 7.99992 15.3265C7.72378 15.3265 7.49992 15.1026 7.49992 14.8265V2.49316C7.49992 2.21702 7.72378 1.99316 7.99992 1.99316ZM1.33325 5.15983C1.33325 4.14731 2.15407 3.3265 3.16659 3.3265H5.99992V13.9932H3.16659C2.15407 13.9932 1.33325 13.1724 1.33325 12.1598V5.15983ZM9.99992 3.3265H12.8333C13.8458 3.3265 14.6666 4.14731 14.6666 5.15983V12.1598C14.6666 13.1724 13.8458 13.9932 12.8333 13.9932H9.99992V3.3265Z" fill="#868C98"/>
+    </svg>
+
 )
