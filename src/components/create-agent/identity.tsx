@@ -5,7 +5,17 @@ import { FaUpload } from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux"
 import { setIdentity, setStep } from "@/store/agent"
 import { StoreType } from "@/types"
+import { BsUpload, BsChevronDown } from "react-icons/bs"
+import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from "@headlessui/react"
 
+const LLM_OPTIONS = [
+    {
+        key: 'gpt',
+        label: 'GPT-4 Turbo',
+        icon: '/create-agent/gpt-4.png',
+        isDefault: true
+    }
+]
 
 export default function AgentForm() {
     const identity = useSelector((state: StoreType) => state.agent.identity)
@@ -39,7 +49,9 @@ export default function AgentForm() {
     const setIdentityValue = (key: string, value: any) => {
         dispatch(setIdentity({ [key]: value }))
     }
-
+    const onUploadClick = () => {
+        document.getElementById('avatar-selector')?.click()
+    }
     return (
         <div className="space-y-8">
             {/* Name Fields */}
@@ -70,8 +82,10 @@ export default function AgentForm() {
                 </div>
                 <div className="flex items-center">
                     <span className="mr-4 text-gray-500">Max 3MB</span>
-                    <button className="w-16 h-16 flex bg-gray-100 rounded-full border border-dashed justify-center items-center text-gray-300">
-                        <FaUpload />
+                    <button
+                        onClick={onUploadClick}
+                        className="w-16 h-16 flex bg-gray-100 rounded-full border border-dashed justify-center items-center text-gray-400">
+                        <BsUpload />
                     </button>
                 </div>
             </div>
@@ -133,16 +147,46 @@ export default function AgentForm() {
                 <div className="flex items-center">
                     <label className="block font-medium">Select LLM</label>
                 </div>
-                <select
-                    className="nextgpt__input"
-                    value={identity.llm}
-                    onChange={(e) => { setIdentityValue('llm', e.target.value) }}
-                >
-                    <option value="">GPT 4e, Llama etc.</option>
-                    <option value="gpt4">GPT-4</option>
-                    <option value="llama">Llama</option>
-                    <option value="claude">Claude</option>
-                </select>
+                <Listbox value={identity.llm} onChange={(value) => setIdentityValue('llm', value)}>
+                    <ListboxButton
+                        className="relative block w-full rounded-lg border bg-white text-left text-sm/6 focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
+                    >
+                        <div className="h-10 flex items-center justify-between px-4">
+                            {LLM_OPTIONS.find(it => it.key === identity.llm) && (
+                                <div className="flex items-center gap-2">
+                                    <img src={LLM_OPTIONS.find(it => it.key === identity.llm)?.icon} alt="icon" className="w-6 h-6 rounded-full" />  
+                                    <span>{LLM_OPTIONS.find(it => it.key === identity.llm)?.label || 'Select LLM'} {LLM_OPTIONS.find(it=>it.key === identity.llm)?.isDefault && '(default)'}</span>
+                                </div>
+                            )}
+                            
+                            
+                            <BsChevronDown
+                                className="group pointer-events-none size-4 fill-gray-400"
+                                aria-hidden="true"
+                            />
+                        </div>
+
+                    </ListboxButton>
+                    <ListboxOptions
+                        anchor="bottom"
+                        transition
+                        className="bg-white w-[var(--button-width)] rounded-xl border [--anchor-gap:var(--spacing-1)] focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 border"
+                    >
+                        {LLM_OPTIONS.map((it) => (
+                            <ListboxOption
+                                key={it.key}
+                                value={it.key}
+                                className="group flex cursor-default items-center gap-2 rounded-lg p-1 select-none data-[focus]:bg-white"
+                            >
+                                <div className="flex items-center gap-2 px-3">
+                                    <img src={it.icon} alt="icon" className="w-6 h-6 rounded-full" />
+                                    <span>{it.label} {it.isDefault && '(default)'}</span>
+                                </div>
+                            </ListboxOption>
+
+                        ))}
+                    </ListboxOptions>
+                </Listbox>
             </div>
         </div>
     )

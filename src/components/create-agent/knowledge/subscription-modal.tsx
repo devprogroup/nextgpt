@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import Modal from '../common/modal';
-import { SubscriptionIcon } from '../svg';
+import { TopicIcon } from '../svg';
 import { MdCheck, MdDriveFolderUpload, MdOutlineUploadFile, MdSearch, MdWeb } from 'react-icons/md';
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { TfiWorld } from 'react-icons/tfi';
@@ -9,6 +11,8 @@ import { TbBrandGoogleDrive, TbBrandNotion, TbBrandOnedrive, TbNotes } from 'rea
 import ScrapeModal from './scrape-modal';
 import PasteTextModal from './page-text-modal';
 import LinkGoogleSheetModal from './link-googlesheet-modal';
+import { StoreType, DocumentType } from '@/types';
+import { setKnowledge } from '@/store/agent';
 
 const styles = [
     {
@@ -31,6 +35,17 @@ const styles = [
     },
 ]
 
+const DOCUMENTS: DocumentType[] = [
+    {
+        name: "Gym membership agreement",
+        size: "1.2 MB",
+    },
+    {
+        name: "Gym membership agreement",
+        size: "1.2 MB",
+    },
+]
+
 interface PropType {
     isOpen: boolean;
     close: () => void;
@@ -39,7 +54,29 @@ const SubscriptionModal: React.FC<PropType> = ({ isOpen, close }) => {
     const [selectedStyle, setSelectedStyle] = useState("searching")
     const [showScrapeModal, setShowScrapeModal] = useState(false)
     const [showPasteTextModal, setShowPasteTextModal] = useState(false)
-    const [showGoogleSheetModal, setShowGoogleSheetModal] = useState(true)
+    const [showGoogleSheetModal, setShowGoogleSheetModal] = useState(false)
+    const [documents, setDocuments] = useState<DocumentType[]>([])
+
+   
+    const dispatch = useDispatch()
+
+    const onOkScrapeModal = () => {
+        setShowScrapeModal(false)
+        setDocuments(DOCUMENTS)
+    }
+    const onOkPasteTextModal = () => {
+        setShowPasteTextModal(false)
+        setDocuments(DOCUMENTS)
+    }
+    const onOkGoogleSheetModal = () => {
+        setShowGoogleSheetModal(false)
+        setDocuments(DOCUMENTS)
+    }
+
+    const onOk = () => {
+        dispatch(setKnowledge({ topics: [{ name: "Gym subscriptions", description: "Gym membership agreement", documents: DOCUMENTS }] }))
+        close()
+    }
 
     return (
         <>
@@ -47,7 +84,7 @@ const SubscriptionModal: React.FC<PropType> = ({ isOpen, close }) => {
                 isOpen={isOpen}
                 close={close}
                 title="Gym subscriptions"
-                titleIcon={<span className="bg-gray-400 flex items-center justify-center p-0.5 rounded"><SubscriptionIcon width={24} height={24} /></span>}
+                titleIcon={<span className="bg-gray-400 flex items-center justify-center p-0.5 rounded"><TopicIcon width={24} height={24} /></span>}
             >
                 <div className="grid grid-cols-2 border-t border-b border-gray-200 min-h-[680px] max-w-[1200px]">
                     <div className="space-y-6 p-6 border-r border-dashed border-gray-200">
@@ -96,75 +133,89 @@ const SubscriptionModal: React.FC<PropType> = ({ isOpen, close }) => {
                         </div>
                     </div>
                     <div className="p-6">
-                        <div className="space-y-2">
-                            <h2 className="text-lg font-semibold">Documents linked to this topic</h2>
-                            <div className="flex gap-2">
-                                <div className="flex items-center gap-2 nextgpt__input">
-                                    <MdSearch />
-                                    <input type="text" className="outline-none" />
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <h2 className="text-lg font-semibold">Documents linked to this topic</h2>
+                                <div className="flex gap-2">
+                                    <div className="flex items-center gap-2 nextgpt__input">
+                                        <MdSearch />
+                                        <input type="text" className="outline-none" />
+                                    </div>
+                                    <Menu>
+                                        <MenuButton className="bg-gray-100 border border-gray-200 w-32 rounded-lg">Add new</MenuButton>
+                                        <MenuItems anchor="bottom end" className="shadow-lg min-w-[200px] rounded border mt-1">
+                                            <div className="p-4 space-y-2">
+                                                <h2 className="nextgpt__text-muted text-sm">Upload</h2>
+                                                <MenuItem>
+                                                    <div className="flex items-center gap-2">
+                                                        <MdOutlineUploadFile className="text-gray-500 text-lg" />
+                                                        <span className="text-sm">File</span>
+                                                    </div>
+                                                </MenuItem>
+                                                <MenuItem>
+                                                    <div className="flex items-center gap-2">
+                                                        <MdDriveFolderUpload className="text-gray-500 text-lg" />
+                                                        <span className="text-sm">Folder</span>
+                                                    </div>
+                                                </MenuItem>
+                                                <hr />
+                                                <h2 className="nextgpt__text-muted text-sm">Static data</h2>
+                                                <MenuItem>
+                                                    <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowScrapeModal(true)}>
+                                                        <TfiWorld className="text-gray-500 text-lg" />
+                                                        <span className="text-sm">Scrape a website</span>
+                                                    </div>
+                                                </MenuItem>
+                                                <MenuItem>
+                                                    <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowPasteTextModal(true)}>
+                                                        <TbNotes className="text-gray-500 text-lg" />
+                                                        <span className="text-sm">Paste text</span>
+                                                    </div>
+                                                </MenuItem>
+                                                <MenuItem>
+                                                    <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowGoogleSheetModal(true)}>
+                                                        <MdDriveFolderUpload className="text-gray-500 text-lg" />
+                                                        <span className="text-sm">Link a Google Sheet</span>
+                                                    </div>
+                                                </MenuItem>
+                                                <hr />
+                                                <h2 className="nextgpt__text-muted text-sm">Live data</h2>
+                                                <MenuItem>
+                                                    <div className="flex items-center gap-2">
+                                                        <TbBrandNotion className="text-gray-500 text-lg" />
+                                                        <span className="text-sm">Connect to Notion</span>
+                                                    </div>
+                                                </MenuItem>
+                                                <MenuItem>
+                                                    <div className="flex items-center gap-2">
+                                                        <TbBrandGoogleDrive className="text-gray-500 text-lg" />
+                                                        <span className="text-sm">Connect to G-Drive</span>
+                                                    </div>
+                                                </MenuItem>
+                                                <MenuItem>
+                                                    <div className="flex items-center gap-2">
+                                                        <TbBrandOnedrive className="text-gray-500 text-lg" />
+                                                        <span className="text-sm">One Drive</span>
+                                                    </div>
+                                                </MenuItem>
+                                            </div>
+
+                                        </MenuItems>
+                                    </Menu>
+
                                 </div>
-                                <Menu>
-                                    <MenuButton className="bg-gray-100 border border-gray-200 w-32 rounded-lg">Add new</MenuButton>
-                                    <MenuItems anchor="bottom end" className="shadow-lg min-w-[200px] rounded border mt-1">
-                                        <div className="p-4 space-y-2">
-                                            <h2 className="nextgpt__text-muted text-sm">Upload</h2>
-                                            <MenuItem>
-                                                <div className="flex items-center gap-2">
-                                                    <MdOutlineUploadFile className="text-gray-500 text-lg" />
-                                                    <span className="text-sm">File</span>
-                                                </div>
-                                            </MenuItem>
-                                            <MenuItem>
-                                                <div className="flex items-center gap-2">
-                                                    <MdDriveFolderUpload className="text-gray-500 text-lg" />
-                                                    <span className="text-sm">Folder</span>
-                                                </div>
-                                            </MenuItem>
-                                            <hr />
-                                            <h2 className="nextgpt__text-muted text-sm">Static data</h2>
-                                            <MenuItem>
-                                                <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowScrapeModal(true)}>
-                                                    <TfiWorld className="text-gray-500 text-lg" />
-                                                    <span className="text-sm">Scrape a website</span>
-                                                </div>
-                                            </MenuItem>
-                                            <MenuItem>
-                                                <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowPasteTextModal(true)}>
-                                                    <TbNotes className="text-gray-500 text-lg" />
-                                                    <span className="text-sm">Paste text</span>
-                                                </div>
-                                            </MenuItem>
-                                            <MenuItem>
-                                                <div className="flex items-center gap-2 cursor-pointer" onClick={() => setShowGoogleSheetModal(true)}>
-                                                    <MdDriveFolderUpload className="text-gray-500 text-lg" />
-                                                    <span className="text-sm">Link a Google Sheet</span>
-                                                </div>
-                                            </MenuItem>
-                                            <hr />
-                                            <h2 className="nextgpt__text-muted text-sm">Live data</h2>
-                                            <MenuItem>
-                                                <div className="flex items-center gap-2">
-                                                    <TbBrandNotion className="text-gray-500 text-lg" />
-                                                    <span className="text-sm">Connect to Notion</span>
-                                                </div>
-                                            </MenuItem>
-                                            <MenuItem>
-                                                <div className="flex items-center gap-2">
-                                                    <TbBrandGoogleDrive className="text-gray-500 text-lg" />
-                                                    <span className="text-sm">Connect to G-Drive</span>
-                                                </div>
-                                            </MenuItem>
-                                            <MenuItem>
-                                                <div className="flex items-center gap-2">
-                                                    <TbBrandOnedrive className="text-gray-500 text-lg" />
-                                                    <span className="text-sm">One Drive</span>
-                                                </div>
-                                            </MenuItem>
-                                        </div>
-
-                                    </MenuItems>
-                                </Menu>
-
+                            </div>
+                            <div className="space-y-2">
+                                <p className="nextgpt__text-muted">{documents.length} documents</p>
+                                <ul className="space-y-2">
+                                    { documents.map((doc, i) => (
+                                        <li key={i} className="flex items-center gap-2 nextgpt__bg-gray-light p-4 rounded-lg">
+                                            <img src="/create-agent/knowledge/pdf.png" alt="pdf" className="h-8 w-8 shadow-lg" />
+                                            <span className="">{doc.name}</span>
+                                            <span className="text-gray-500">{doc.size}</span>
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -172,28 +223,28 @@ const SubscriptionModal: React.FC<PropType> = ({ isOpen, close }) => {
 
                 </div>
                 <div className='flex justify-between px-6 py-4'>
-                    <button className="nextgpt__btn-primary">Cancel</button>
-                    <button className="nextgpt__btn-dark">Add topic</button>
+                    <button className="nextgpt__btn-primary" onClick={close}>Cancel</button>
+                    <button className="nextgpt__btn-dark" onClick={onOk}>Add topic</button>
                 </div>
             </Modal>
             <ScrapeModal
                 key="scrape-modal"
                 isOpen={showScrapeModal}
                 close={() => setShowScrapeModal(false)}
-                onOk={() => setShowScrapeModal(false)}
+                onOk={onOkScrapeModal}
             />
 
             <PasteTextModal
                 key="paste-text-modal"
                 isOpen={showPasteTextModal}
                 close={() => setShowPasteTextModal(false)}
-                onOk={() => setShowPasteTextModal(false)}
+                onOk={onOkPasteTextModal}
             />
             <LinkGoogleSheetModal
                 key="link-googlesheet-modal"
                 isOpen={showGoogleSheetModal}
                 close={() => setShowGoogleSheetModal(false)}
-                onOk={() => setShowGoogleSheetModal(false)}
+                onOk={onOkGoogleSheetModal}
             />
         </>
     );

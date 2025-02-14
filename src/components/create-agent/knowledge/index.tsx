@@ -5,6 +5,10 @@ import { setKnowledge } from "@/store/agent";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import SubscriptionModal from "./subscription-modal";
+import { StoreType } from "@/types";
+import { TopicIcon } from "../svg";
+import OfferAlternative from "./offer-alternative";
+import AlternativeOther from "./alternative-other";
 const PARAMETERS = [
     {
         key: "limit_to_provided_knowledge",
@@ -19,22 +23,36 @@ const PARAMETERS = [
         label: 'Allow flexibility around order of information'
     },
 ]
-const ALTERNATIVES = ['Escalate', 'Offer alternative', 'Other']
+const ALTERNATIVES = [
+    {
+        key: 'escalate',
+        label: 'Escalate',
+    },
+    {
+        key: 'offer_alternative',
+        label: 'Offer alternative',
+    },
+    {
+        key: 'other',
+        label: 'Other',
+    }
+]
 
-export default function Knowledge(){
-    const knowledge = useSelector((state:any) => state.agent.knowledge)
-    const [showSubscriptionModal, setShowSubscriptionModal] = React.useState(true);
+export default function Knowledge() {
+    const knowledge = useSelector((state: StoreType) => state.agent.knowledge)
+    const [showSubscriptionModal, setShowSubscriptionModal] = React.useState(false);
+   
 
     const dispatch = useDispatch()
     const setKnowledgeValue = (key: string, value: string) => {
         dispatch(setKnowledge({ [key]: value }))
     }
-    const onParameterChange = (key:string, value:boolean) => {
+    const onParameterChange = (key: string, value: boolean) => {
         let newParameters
-        if(value){
+        if (value) {
             newParameters = [...knowledge.parameters, key]
-        }else{
-            newParameters = knowledge.parameters.filter((it:string)=>it !== key)
+        } else {
+            newParameters = knowledge.parameters.filter((it: string) => it !== key)
         }
         dispatch(setKnowledge({ parameters: newParameters }))
     }
@@ -45,29 +63,51 @@ export default function Knowledge(){
                     <label htmlFor="topic" className="block">
                         What topic should this agent have knowledge about?
                     </label>
-                    <div id="topic" className="nextgpt__agent_border border-dashed py-6 rounded-md text-center">
-                        <p className="text-center font-semibold">Add your first knowledge source</p>
-                        <p className="nextgpt__agent_text-muted mb-6">Give your agent more context and resource to handle tasks.</p>
-                        <button className="bg-gray-200 py-1 px-3 rounded-lg" onClick={()=>{setShowSubscriptionModal(true)}}>New knowledge</button>
-                    </div>
+                    {knowledge.topics.length === 0 ? (
+                        <div id="topic" className="nextgpt__agent_border border-dashed py-6 rounded-md text-center">
+                            <p className="text-center font-semibold">Add your first knowledge source</p>
+                            <p className="nextgpt__agent_text-muted mb-6">Give your agent more context and resource to handle tasks.</p>
+                            <button className="bg-gray-200 py-1 px-3 rounded-lg" onClick={() => { setShowSubscriptionModal(true) }}>New knowledge</button>
+                        </div>
+                    ) : (
+                        <div>{
+                            knowledge.topics.map((topic, i) => (
+                                <div className="flex items-center gap-2 border rounded-lg p-2" key={i}>
+                                    <span className="bg-gray-400 flex items-center justify-center p-0.5 rounded"><TopicIcon width={24} height={24} /></span>
+                                    <div>
+                                        <h2>{topic.name}</h2>
+                                        <p className="nextgpt__text-muted text-sm">{topic.description}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+
                 </div>
                 <div className="nextgpt__form-group">
                     <label htmlFor="no-answer" className="block">
                         What if agent can't answer a question?
                     </label>
-                    <div id="no-answer">
+                    <div id="no-answer" className="space-y-2">
                         <div className="flex flex-wrap gap-2">
-                        {ALTERNATIVES.map((it) => (
-                            <button
-                                key={it}
-                                onClick={() => { setKnowledgeValue('alternative', it) }}
-                                className={`nextgpt__btn-rounded ${knowledge.alternative === it && "active"}`}
-                            >
-                                {it}
-                            </button>
-                        ))}
-                    </div>
-                    
+                            {ALTERNATIVES.map((it) => (
+                                <button
+                                    key={it.key}
+                                    onClick={() => { setKnowledgeValue('alternativeType', it.key) }}
+                                    className={`nextgpt__btn-rounded ${knowledge.alternativeType === it.key && "active"}`}
+                                >
+                                    {it.label}
+                                </button>
+                            ))}
+                        </div>
+                        {knowledge.alternativeType === 'offer_alternative' && (
+                            <OfferAlternative />
+                        )}
+                        {knowledge.alternativeType === 'other' && (
+                            <AlternativeOther />
+                        )}
+
+                        
                     </div>
                 </div>
                 <div className="nextgpt__form-group">
@@ -77,12 +117,12 @@ export default function Knowledge(){
                     <div id="parameters">
                         <ul>
                             {
-                                PARAMETERS.map((it, i)=>(
+                                PARAMETERS.map((it, i) => (
                                     <li key={it.key}>
                                         <label>
                                             <input
                                                 type="checkbox"
-                                                onChange={(e)=>{onParameterChange(it.key, e.target.checked)}}
+                                                onChange={(e) => { onParameterChange(it.key, e.target.checked) }}
                                                 checked={knowledge.parameters.includes(it.key)}
                                             /> {it.label}
                                         </label>

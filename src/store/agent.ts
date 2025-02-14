@@ -10,7 +10,8 @@ const initialState: AgentStateType = {
         role: '',
         organization: '',
         organizationDescription: '',
-        llm: ''
+        llm: '',
+        avatarUrl: null
     },
     task: {
         purpose: '',
@@ -20,12 +21,27 @@ const initialState: AgentStateType = {
         collections: null
     },
     knowledge: {
-        alternative: '',
-        parameters: []
+        alternativeType: null,
+        alternatives: [],
+        alternativeDescription: '',
+        parameters: [],
+        topics: [],
     },
-    skills: {},
+    skills: [],
     personality: {
         blacklist: [],
+        communicationStyles: {
+            preset: [
+            { key: 'professional', name: 'Professional' },
+            { key: 'friendly', name: 'Friendly' },
+            { key: 'expert', name: 'Expert' },
+            { key: 'conversational', name: 'Conversational' },
+        ],
+        custom: [
+            { key: 'custom', name: 'Custom style name' }
+        ]
+    }
+        
     }
 };
 
@@ -59,9 +75,12 @@ const appSlice = createSlice({
                 ...state.personality,
                 ...action.payload
             }
+        },
+        setSkills: (state, action) => {
+            state.skills = action.payload
         }
     }
 });
 
-export const { setStep, setIdentity, setTask, setKnowledge, setPersonality } = appSlice.actions;
+export const { setStep, setIdentity, setTask, setKnowledge, setPersonality, setSkills } = appSlice.actions;
 export default appSlice.reducer;

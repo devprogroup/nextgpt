@@ -1,0 +1,182 @@
+import React, {useState} from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { StoreType } from "@/types";
+import { FaArrowRight } from "react-icons/fa";
+import { Slider } from "@radix-ui/react-slider";
+
+const CUSTOM_STYLE = [
+    {
+        key: 'formality',
+        start: 'Formality',
+        end: 'Casual',
+    },
+    {
+        key: 'seriousness',
+        start: 'Funny',
+        end: 'Serious',
+    },
+    {
+        key: 'respect',
+        start: 'Respectful',
+        end: 'Irreverent',
+    },
+    {
+        key: 'nonsense',
+        start: 'Nonsense',
+        end: 'Entdusiastic',
+    }
+]
+
+interface PropType {
+    onUseStyle: () => void;
+}
+
+export default function SelectStyle({onUseStyle}: PropType) {
+    const [selectedStyle, setSelectedStyle] = useState<string>('');
+        const communicationStyles = useSelector((state: StoreType) => state.agent.personality.communicationStyles);
+        const [abstractness, setAbstractness] = useState<string>('S');
+        const [specificity, setSpecificity] = useState<string>('General');
+        const [outputLength, setOutputLength] = useState<string>('S');
+        const [complexity, setComplexity] = useState<string>('General');
+    return (
+        <div>
+            <div className="flex">
+                <div className="w-[280px] bg-gray-200 border-r border-gray-300 p-4 relative">
+                    <h2 className="text-gray-500 text-sm p-2">Styles</h2>
+                    <ul>
+                        {communicationStyles.preset.map((style) => (
+                            <li
+                                key={style.key}
+                                className={`p-2 hover:bg-gray-100 cursor-pointer rounded-lg flex justify-between ${selectedStyle !== style.key && 'nextgpt__text-muted'}`}
+                                onClick={() => setSelectedStyle(style.key)}
+                            >
+                                <span>{style.name}</span>
+                                <span className="italic w-5 h-5 text-sm flex justify-center items-center bg-gray-300 rounded">P</span>
+                            </li>
+                        ))}
+                        {communicationStyles.custom.map((style) => (
+                            <li key={style.key} className={`p-2 hover:bg-gray-100 cursor-pointer rounded-lg ${selectedStyle !== style.key && 'nextgpt__text-muted'}`} onClick={() => setSelectedStyle(style.key)}>
+                                {style.name}
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="bg-white rounded-lg p-4 absolute bottom-4 right-4 left-4">
+                        <h2 className="font-semibold mb-1">Have your own voices?</h2>
+                        <p className="nextgpt__text-muted mb-2">Share text we can analyse to craft a custom tone.</p>
+                        <a className="nextgpt__text-muted font-semibold flex items-center gap-2 cursor-pointer">
+                            <span>Share examples</span>
+                            <FaArrowRight />
+                        </a>
+                    </div>
+                </div>
+                <div className="p-4">
+                    <div className="space-y-6">
+                        <div className="flex justify-between items-center p-2">
+                            <div className="flex items-center gap-2 nextgpt__text-muted">
+                                <span className="font-semibold">Parameters</span>
+                                <span>Explaination</span>
+                            </div>
+                            <span className="nextgpt__text-muted">Explaination</span>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td className="w-[120]"></td>
+                                    <td className="w-[100px] text-sm text-gray-600">VERY</td>
+                                    <td className="w-[100px] text-sm text-gray-600">SLIGHTLY</td>
+                                    <td className="w-[100px] text-sm text-gray-600">BALANCED</td>
+                                    <td className="w-[100px] text-sm text-gray-600">SLIGHTLY</td>
+                                    <td className="w-[100px] text-sm text-gray-600">VERY</td>
+                                    <td className='w-120'></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {CUSTOM_STYLE.map((style) => (
+                                    <tr key={style.key}>
+                                        <td className="py-2">{style.start}</td>
+                                        <td colSpan={5}>
+                                            <Slider
+                                                defaultValue={[50]}
+                                                min={0}
+                                                max={100}
+                                                step={1}
+                                                aria-label="Communication style slider"
+                                                className="bg-blue-500"
+                                            />
+                                        </td>
+                                        <td className="py-2 text-end">{style.end}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                        <div className="space-y-6">
+                            <div className="space-y-2">
+                                <label className="nextgpt__text-muted text-sm">Level of abstraction</label>
+                                <div className="flex justify-between items-center">
+                                    <span>Abstractness</span>
+                                    <span className="flex gap-2">
+                                        {['S', 'M', 'L'].map((size) => (
+                                            <button
+                                                key={size}
+                                                className={`rounded-full py-1 px-5 border ${size === abstractness && 'bg-gray-200'}`}
+                                                onClick={() => setAbstractness(size)}
+                                            >{size}</button>
+                                        ))}
+
+                                        
+                                    </span>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                    <span>Specificity</span>
+                                    <span className="flex gap-2">
+                                        {['General', 'Balanced', 'Specific'].map((size) => (
+                                            <button
+                                                key={size}
+                                                onClick={() => setSpecificity(size)}
+                                                className={`rounded-full py-1 px-5 border ${size === specificity && 'bg-gray-200'}`}
+                                            >General</button>
+                                        ))}
+                                        
+                                        
+                                    </span>
+                                </div>
+                            </div>
+                            <div className="space-y-2">
+                                <label className="nextgpt__text-muted text-sm">Length & complexity</label>
+                                <div className="flex justify-between items-center">
+                                    <span>Output length</span>
+                                    <span className="flex gap-2">
+                                    {['S', 'M', 'L'].map((size) => (
+                                            <button
+                                                key={size}
+                                                className={`rounded-full py-1 px-5 border ${size === outputLength && 'bg-gray-200'}`}
+                                                onClick={() => setOutputLength(size)}
+                                            >{size}</button>
+                                        ))}
+                                    </span>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                    <span>Complexity</span>
+                                    <span className="flex gap-2">
+                                    {['General', 'Balanced', 'Specific'].map((size) => (
+                                            <button
+                                                key={size}
+                                                onClick={() => setComplexity(size)}
+                                                className={`rounded-full py-1 px-5 border ${size === complexity && 'bg-gray-200'}`}
+                                            >{size}</button>
+                                        ))}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="h-20"></div>
+                    </div>
+                </div>
+            </div>
+            <div className="flex justify-between py-4 px-4 border-t border-gray-300">
+                <button className="nextgpt__btn-primary">Cancel</button>
+                <button className="nextgpt__btn-dark" onClick={onUseStyle}>Use style</button>
+            </div>
+        </div>
+    )
+}

@@ -33,7 +33,7 @@ body {
   @apply rounded-lg bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800
 }
 .nextgpt__btn-primary {
-  @apply rounded-lg px-4 py-2 text-sm border hover:bg-gray-800
+  @apply rounded-lg px-2 py-1 text-sm text-gray-900 bg-gray-100 shadow-md hover:bg-gray-200
 }
 .nextgpt__agent_title {
   @apply text-3xl font-semibold
@@ -45,7 +45,7 @@ body {
   @apply space-y-2
 }
 .nextgpt__form-container {
-  @apply space-y-8
+  @apply space-y-4
 }
 .nextgpt__agent_border {
   @apply border border-gray-300
@@ -68,3 +68,8 @@ body {
 .nextgpt__agent_btn-secondary {
   @apply bg-white px-3 py-1 rounded-lg nextgpt__agent_border nextgpt__text-muted
 }
+
+.nextgpt__bg-gray-light {
+  @apply bg-gray-100
+}
+

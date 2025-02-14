@@ -14,12 +14,39 @@ export interface ScriptType {
     steps: StepType[]
 }
 
+export interface DocumentType{
+    name: string,
+    size: string,
+}
+
+export interface TopicType {
+    name: string,
+    description: string,
+    documents: DocumentType[],
+}
+
 export interface CollectionType {
     name: string,
     description: string,
     compulsory: boolean,
     validations: string[],
     exampleResponse: string,
+}
+export interface KnowledgeAlternativeType {
+    method: 'whatsapp' | 'email' | 'phone',
+    name: string,
+    value: string,
+    description: string,
+}
+
+export interface SkillType {
+    name: string,
+    key: string,
+    description: string,
+}
+export interface CommunicationStyleType {
+    key: string,
+    name: string,
 }
 export interface AgentStateType{
     step: number,
@@ -29,7 +56,8 @@ export interface AgentStateType{
         role: string,
         organization: string,
         organizationDescription: string,
-        llm: string
+        llm: string,
+        avatarUrl: string | null
     },
     task: {
         purpose: string,
@@ -39,12 +67,20 @@ export interface AgentStateType{
         collections: CollectionType[] | null
     },
     knowledge: {
-        alternative: string,
-        parameters: string[]
+        alternativeType: 'escalate' | 'offer_alternative' | 'other' | null,
+        alternatives: KnowledgeAlternativeType[],
+        alternativeDescription: string,
+        parameters: string[],
+        topics: TopicType[],
     },
-    skills: {},
+    skills: SkillType[],
     personality: {
         blacklist: string[],
+        communicationStyles: {
+            preset: CommunicationStyleType[],
+            custom: CommunicationStyleType[]
+        }
+        
     }
 }
 
