@@ -4,8 +4,10 @@ import { useDispatch, useSelector } from "react-redux"
 import { FaTimes } from 'react-icons/fa'
 import { STEPS } from "@/constants"
 import { setStep } from "@/store/agent"
+import { StoreType } from "@/types"
+
 export default function ProgressHeader() {
-    const step = useSelector((state:any)=>state.agent.step)
+    const step = useSelector((state:StoreType)=>state.agent.step)
     const dispatch = useDispatch()
 
     return (

@@ -1,5 +1,6 @@
 "use client"
-import React, { useEffect } from "react"
+import React from "react"
+import Image from "next/image"
 import { useDispatch, useSelector } from "react-redux"
 import Header from "@/components/create-agent/common/header"
 import Identity from "@/components/create-agent/identity"
@@ -10,11 +11,12 @@ import Personality from "@/components/create-agent/personality"
 import Review from "@/components/create-agent/review"
 import BottomNav from "@/components/create-agent/common/bottom-nav"
 
+
 import { STEPS } from "@/constants"
 import { StoreType } from "@/types"
 import { setIdentity } from "@/store/agent"
 
-export default function CreateAgent({ children }: { children: React.ReactNode }) {
+const CreateAgent: React.FC = () => {
     const agent = useSelector((state: StoreType) => state.agent)
     const step = useSelector((state: StoreType) => state.agent.step)
     const dispatch = useDispatch()
@@ -59,7 +61,7 @@ export default function CreateAgent({ children }: { children: React.ReactNode })
                         <div className="rounded-3xl bg-white p-6  min-w-2/3 shadow-lg">
                             <div className="flex flex-col items-center gap-4">
                                 {agent.identity.avatarUrl ? (
-                                    <img src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-24 w-24 object-cover" />
+                                    <Image src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-24 w-24 object-cover" />
                                 ) : (
                                     <div className="flex h-28 w-28 items-center justify-center rounded-full bg-gray-100 text-3xl font-medium">
                                     {agent.identity.firstName[0]}
@@ -82,3 +84,6 @@ export default function CreateAgent({ children }: { children: React.ReactNode })
         </div>
     )
 }
+
+
+export default CreateAgent

@@ -1,12 +1,12 @@
 "use client"
 
 import { useState } from "react"
-import { FaUpload } from 'react-icons/fa'
 import { useDispatch, useSelector } from "react-redux"
-import { setIdentity, setStep } from "@/store/agent"
+import { setIdentity } from "@/store/agent"
 import { StoreType } from "@/types"
 import { BsUpload, BsChevronDown } from "react-icons/bs"
 import { Listbox, ListboxButton, ListboxOptions, ListboxOption } from "@headlessui/react"
+import Image from "next/image"
 
 const LLM_OPTIONS = [
     {
@@ -23,14 +23,14 @@ export default function AgentForm() {
     const [showOther, setShowOther] = useState(false)
 
     const roles = [
-        "Brand manager",
-        "Business analyst",
-        "Business developer",
-        "HR support",
-        "Customer onboarding",
-        "Customer support",
-        "Marketing manager",
-        "Interviewer",
+        'Brand manager',
+        'Business analyst',
+        'Business developer',
+        'HR support',
+        'Customer onboarding',
+        'Customer support',
+        'Marketing manager',
+        'Interviewer',
     ]
     const onClickRole = (role: string) => {
         if (role === identity.role) {
@@ -92,13 +92,13 @@ export default function AgentForm() {
 
             {/* Role Selection */}
             <div className="space-y-4">
-                <label className="block">What is your agent's role in your company?</label>
+                <label className="block">What is your agent&lsquo;s role in your company?</label>
                 <div className="flex flex-wrap gap-2">
                     {roles.map((it) => (
                         <button
                             key={it}
                             onClick={() => { onClickRole(it) }}
-                            className={`nextgpt__btn-rounded ${identity.role === it && "active"}`}
+                            className={`nextgpt__btn-rounded ${identity.role === it && 'active'}`}
                         >
                             {it}
                         </button>
@@ -179,7 +179,7 @@ export default function AgentForm() {
                                 className="group flex cursor-default items-center gap-2 rounded-lg p-1 select-none data-[focus]:bg-white"
                             >
                                 <div className="flex items-center gap-2 px-3">
-                                    <img src={it.icon} alt="icon" className="w-6 h-6 rounded-full" />
+                                    <Image src={it.icon} alt="icon" className="w-6 h-6 rounded-full" />
                                     <span>{it.label} {it.isDefault && '(default)'}</span>
                                 </div>
                             </ListboxOption>

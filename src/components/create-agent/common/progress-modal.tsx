@@ -2,6 +2,8 @@
 
 import React from "react"
 import { Dialog, DialogPanel } from '@headlessui/react'
+import Image from "next/image"
+
 interface PropType {
     progress: number | null,
     title: string,
@@ -27,7 +29,7 @@ export function ProgressModal({
                     <div className="space-y-6">
                         {bannerImg && (
                             <div className="flex items-center justify-center">
-                                <img src={bannerImg} className="h-24" />
+                                <Image src={bannerImg} alt={title} className="h-24" />
                             </div>
                         )}
                         {title && (

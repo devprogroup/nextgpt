@@ -5,17 +5,22 @@ import { useSelector } from "react-redux";
 import { setStep } from "@/store/agent";
 import { useDispatch } from "react-redux";
 import { STEPS } from "@/constants";
+import { StoreType } from "@/types";
 
-export default function BottomNav ({valid}:{valid:boolean}){
-    const step = useSelector((state:any)=>state.agent.step)
-    const dispatch = useDispatch()
+interface PropType {
+    valid:boolean
+}
+
+const BottomNav: React.FC<PropType> = ({ valid }: PropType) => {
+    const step = useSelector((state: StoreType) => state.agent.step);
+    const dispatch = useDispatch();
     const onNext = () => {
-        if(valid){
-            dispatch(setStep(step+1))
+        if (valid) {
+            dispatch(setStep(step + 1));
         }
     }
     const onBack = () => {
-        dispatch(setStep(step-1))
+        dispatch(setStep(step - 1));
     }
     return (
         <div className="flex items-center justify-between pt-6">
@@ -37,3 +42,5 @@ export default function BottomNav ({valid}:{valid:boolean}){
         </div>
     )
 }
+
+export default BottomNav
