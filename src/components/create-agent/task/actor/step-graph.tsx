@@ -108,10 +108,10 @@ export default function StepGraph() {
 
         if(steps.length === 0) {
             return [
-            { id: '0', type: 'StartNode', position: { x: 100, y: 0 }, data: { label: 'start' } },
-            { id: '1', type: 'EndNode', position: { x: 100, y: 100 }, data: { label: 'end' } },
+            { id: '0', type: 'StartNode', position: { x: 100, y: 0 }, data: {  } },
+            { id: '1', type: 'EndNode', position: { x: 100, y: 100 }, data: {  } },
         ]}
-        let top = 100
+        let top = 200
         const nodes: {
             id: string,
             type: string,
@@ -120,7 +120,7 @@ export default function StepGraph() {
                 y: number
             },
             data: any
-        }[] = [{ id: '0', type: 'StartNode', position: { x: 268, y: 0 }, data: { label: '0' } }]
+        }[] = [{ id: '0', type: 'StartNode', position: { x: 268, y: 100 }, data: { label: '0' } }]
 
         steps.forEach((step, index)=>{
             nodes.push({
