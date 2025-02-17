@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Slider } from "@radix-ui/react-slider";
+
 
 import { FaArrowLeft } from "react-icons/fa";
 import { MdClose } from "react-icons/md";
+import { Range } from "react-range";
 
 const CUSTOM_STYLE = [
     {
@@ -36,6 +37,12 @@ export default function AnalyzeResult({ close, create }: PropType) {
     const [specificity, setSpecificity] = useState<string>('General');
     const [outputLength, setOutputLength] = useState<string>('S');
     const [complexity, setComplexity] = useState<string>('General');
+    const [styleValues, setStyleValues] = useState<Record<string, number[]>>({
+        formality: [0],
+        seriousness: [0],
+        respect: [0],
+        nonsense: [0]
+    })
     return (
         <div className="h-full flex flex-col">
             <div className="flex items-center justify-between mb-4 p-4">
@@ -66,13 +73,40 @@ export default function AnalyzeResult({ close, create }: PropType) {
                                     <tr key={style.key}>
                                         <td className="py-2">{style.start}</td>
                                         <td colSpan={5}>
-                                            <Slider
-                                                defaultValue={[50]}
-                                                min={0}
-                                                max={100}
-                                                step={1}
-                                                aria-label="Communication style slider"
-                                            />
+                                            <div className="relative">
+                                                <div className="bg-gray-200 h-2 absolute w-full rounded-full">
+                                                    <div
+                                                        className="absolute h-full bg-gray-800 rounded-full"
+                                                        style={{
+                                                            left: styleValues[style.key][0] >= 0 ? '50%' : `${(50 + styleValues[style.key][0])}%`, width: `${Math.abs(styleValues[style.key][0])}%`
+                                                        }}>
+
+                                                    </div>
+                                                </div>
+                                                <Range
+                                                    label="Select your value"
+                                                    step={0.1}
+                                                    min={-50}
+                                                    max={50}
+                                                    values={styleValues[style.key]}
+                                                    onChange={(values) => setStyleValues(prev => ({ ...prev, [style.key]: values }))}
+                                                    renderTrack={({ props, children }) => (
+                                                        <div
+                                                            className="h-2"
+                                                            {...props}
+                                                        >
+                                                            {children}
+                                                        </div>
+                                                    )}
+                                                    renderThumb={({ props }) => (
+                                                        <div
+                                                            {...props}
+                                                            key={props.key}
+                                                            className="h-6 w-6 bg-white border border-gray-200 shadow-md rounded-full"
+                                                        />
+                                                    )}
+                                                />
+                                            </div>
                                         </td>
                                         <td className="py-2 text-end">{style.end}</td>
                                     </tr>

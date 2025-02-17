@@ -14,7 +14,7 @@ const PRESETS: CommunicationStyleType[] = [
 
 export default function CommunicationStyle() {
     const [selected, setSelected] = useState<CommunicationStyleType | null>(null)
-    const [showCommunicationStyleModal, setShowCommunicationStyleModal] = useState(false)
+    const [showCommunicationStyleModal, setShowCommunicationStyleModal] = useState(true)
     return (
         <div>
             <Listbox value={selected} onChange={setSelected}>

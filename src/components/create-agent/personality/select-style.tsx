@@ -1,10 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { StoreType } from "@/types";
 import { FaArrowRight } from "react-icons/fa";
-import { Slider } from "@radix-ui/react-slider";
-
-const CUSTOM_STYLE = [
+import { Range } from 'react-range'
+const CUSTOM_STYLE :{key: string, start: string, end: string}[]= [
     {
         key: 'formality',
         start: 'Formality',
@@ -31,13 +30,20 @@ interface PropType {
     onUseStyle: () => void;
 }
 
-export default function SelectStyle({onUseStyle}: PropType) {
+export default function SelectStyle({ onUseStyle }: PropType) {
     const [selectedStyle, setSelectedStyle] = useState<string>('');
-        const communicationStyles = useSelector((state: StoreType) => state.agent.personality.communicationStyles);
-        const [abstractness, setAbstractness] = useState<string>('S');
-        const [specificity, setSpecificity] = useState<string>('General');
-        const [outputLength, setOutputLength] = useState<string>('S');
-        const [complexity, setComplexity] = useState<string>('General');
+    const communicationStyles = useSelector((state: StoreType) => state.agent.personality.communicationStyles);
+    const [abstractness, setAbstractness] = useState<string>('S');
+    const [specificity, setSpecificity] = useState<string>('General');
+    const [outputLength, setOutputLength] = useState<string>('S');
+    const [complexity, setComplexity] = useState<string>('General');
+    const [styleValues, setStyleValues] = useState<Record<string, number[]>>({
+        formality: [0],
+        seriousness: [0],
+        respect: [0],
+        nonsense: [0]
+    })
+    
     return (
         <div>
             <div className="flex">
@@ -95,14 +101,41 @@ export default function SelectStyle({onUseStyle}: PropType) {
                                     <tr key={style.key}>
                                         <td className="py-2">{style.start}</td>
                                         <td colSpan={5}>
-                                            <Slider
-                                                defaultValue={[50]}
-                                                min={0}
-                                                max={100}
-                                                step={1}
-                                                aria-label="Communication style slider"
-                                                className="bg-blue-500"
-                                            />
+                                            <div className="relative">
+                                                <div className="bg-gray-200 h-2 absolute w-full rounded-full">
+                                                    <div
+                                                        className="absolute h-full bg-gray-800 rounded-full"
+                                                        style={{
+                                                            left: styleValues[style.key][0] >= 0 ? '50%' : `${(50 + styleValues[style.key][0])}%`, width: `${Math.abs(styleValues[style.key][0])}%`
+                                                        }}>
+
+                                                    </div>
+                                                </div>
+                                                <Range
+                                                    label="Select your value"
+                                                    step={0.1}
+                                                    min={-50}
+                                                    max={50}
+                                                    values={styleValues[style.key]}
+                                                    onChange={(values) => setStyleValues(prev => ({ ...prev, [style.key]: values }))}
+                                                    renderTrack={({ props, children }) => (
+                                                        <div
+                                                            className="h-2"
+                                                            {...props}
+                                                        >
+                                                            {children}
+                                                        </div>
+                                                    )}
+                                                    renderThumb={({ props }) => (
+                                                        <div
+                                                            {...props}
+                                                            key={props.key}
+                                                            className="h-6 w-6 bg-white border border-gray-200 shadow-md rounded-full"
+                                                        />
+                                                    )}
+                                                />
+                                            </div>
+
                                         </td>
                                         <td className="py-2 text-end">{style.end}</td>
                                     </tr>
@@ -123,7 +156,7 @@ export default function SelectStyle({onUseStyle}: PropType) {
                                             >{size}</button>
                                         ))}
 
-                                        
+
                                     </span>
                                 </div>
                                 <div className="flex justify-between items-center">
@@ -136,8 +169,8 @@ export default function SelectStyle({onUseStyle}: PropType) {
                                                 className={`rounded-full py-1 px-5 border ${size === specificity && 'bg-gray-200'}`}
                                             >General</button>
                                         ))}
-                                        
-                                        
+
+
                                     </span>
                                 </div>
                             </div>
@@ -146,7 +179,7 @@ export default function SelectStyle({onUseStyle}: PropType) {
                                 <div className="flex justify-between items-center">
                                     <span>Output length</span>
                                     <span className="flex gap-2">
-                                    {['S', 'M', 'L'].map((size) => (
+                                        {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
                                                 className={`rounded-full py-1 px-5 border ${size === outputLength && 'bg-gray-200'}`}
@@ -158,7 +191,7 @@ export default function SelectStyle({onUseStyle}: PropType) {
                                 <div className="flex justify-between items-center">
                                     <span>Complexity</span>
                                     <span className="flex gap-2">
-                                    {['General', 'Balanced', 'Specific'].map((size) => (
+                                        {['General', 'Balanced', 'Specific'].map((size) => (
                                             <button
                                                 key={size}
                                                 onClick={() => setComplexity(size)}
