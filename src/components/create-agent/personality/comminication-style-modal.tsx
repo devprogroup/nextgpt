@@ -25,7 +25,7 @@ const CommunicationStyleModal: React.FC<CommunicationStyleModalProps> = ({ isOpe
             close={close}
             showTitle={false}
         >
-            <div className="w-[960px] h-[720px]">
+            <div className="w-[960px] h-[740px]">
                 {step === 'select-style' && <SelectStyle onUseStyle={() => { setStep('paste-sample-text'); }} />}
                 {step === 'paste-sample-text' && <PasteSampleText close={close} onAnalyze={() => { 
                     setStep('analyze'); 

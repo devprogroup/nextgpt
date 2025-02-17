@@ -56,63 +56,65 @@ export default function AnalyzeResult({ close, create }: PropType) {
 
                 <div className="p-4">
                     <div className="space-y-6">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td className="w-[120]"></td>
-                                    <td className="w-[100px] text-sm text-gray-600">VERY</td>
-                                    <td className="w-[100px] text-sm text-gray-600">SLIGHTLY</td>
-                                    <td className="w-[100px] text-sm text-gray-600">BALANCED</td>
-                                    <td className="w-[100px] text-sm text-gray-600">SLIGHTLY</td>
-                                    <td className="w-[100px] text-sm text-gray-600">VERY</td>
-                                    <td className='w-120'></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {CUSTOM_STYLE.map((style) => (
-                                    <tr key={style.key}>
-                                        <td className="py-2">{style.start}</td>
-                                        <td colSpan={5}>
-                                            <div className="relative">
-                                                <div className="bg-gray-200 h-2 absolute w-full rounded-full">
-                                                    <div
-                                                        className="absolute h-full bg-gray-800 rounded-full"
-                                                        style={{
-                                                            left: styleValues[style.key][0] >= 0 ? '50%' : `${(50 + styleValues[style.key][0])}%`, width: `${Math.abs(styleValues[style.key][0])}%`
-                                                        }}>
-
-                                                    </div>
-                                                </div>
-                                                <Range
-                                                    label="Select your value"
-                                                    step={0.1}
-                                                    min={-50}
-                                                    max={50}
-                                                    values={styleValues[style.key]}
-                                                    onChange={(values) => setStyleValues(prev => ({ ...prev, [style.key]: values }))}
-                                                    renderTrack={({ props, children }) => (
-                                                        <div
-                                                            className="h-2"
-                                                            {...props}
-                                                        >
-                                                            {children}
-                                                        </div>
-                                                    )}
-                                                    renderThumb={({ props }) => (
-                                                        <div
-                                                            {...props}
-                                                            key={props.key}
-                                                            className="h-6 w-6 bg-white border border-gray-200 shadow-md rounded-full"
-                                                        />
-                                                    )}
-                                                />
-                                            </div>
-                                        </td>
-                                        <td className="py-2 text-end">{style.end}</td>
+                        <div className="nextgpt__bg-surface p-4 rounded-lg">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td className="w-[120]"></td>
+                                        <td className="w-[100px] text-sm text-gray-600">VERY</td>
+                                        <td className="w-[100px] text-sm text-gray-600">SLIGHTLY</td>
+                                        <td className="w-[100px] text-sm text-gray-600">BALANCED</td>
+                                        <td className="w-[100px] text-sm text-gray-600">SLIGHTLY</td>
+                                        <td className="w-[100px] text-sm text-gray-600">VERY</td>
+                                        <td className='w-120'></td>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {CUSTOM_STYLE.map((style) => (
+                                        <tr key={style.key}>
+                                            <td className="py-2">{style.start}</td>
+                                            <td colSpan={5}>
+                                                <div className="relative">
+                                                    <div className="bg-gray-200 h-1 absolute w-full rounded-full">
+                                                        <div
+                                                            className="absolute h-full bg-gray-800 rounded-full"
+                                                            style={{
+                                                                left: styleValues[style.key][0] >= 0 ? '50%' : `${(50 + styleValues[style.key][0])}%`, width: `${Math.abs(styleValues[style.key][0])}%`
+                                                            }}>
+
+                                                        </div>
+                                                    </div>
+                                                    <Range
+                                                        label="Select your value"
+                                                        step={0.1}
+                                                        min={-50}
+                                                        max={50}
+                                                        values={styleValues[style.key]}
+                                                        onChange={(values) => setStyleValues(prev => ({ ...prev, [style.key]: values }))}
+                                                        renderTrack={({ props, children }) => (
+                                                            <div
+                                                                className="h-2"
+                                                                {...props}
+                                                            >
+                                                                {children}
+                                                            </div>
+                                                        )}
+                                                        renderThumb={({ props }) => (
+                                                            <div
+                                                                {...props}
+                                                                key={props.key}
+                                                                className="h-6 w-6 bg-white border border-gray-200 shadow-md rounded-full"
+                                                            />
+                                                        )}
+                                                    />
+                                                </div>
+                                            </td>
+                                            <td className="py-2 text-end">{style.end}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                         <div className="space-y-6">
                             <div className="space-y-2">
                                 <label className="nextgpt__text-muted text-sm">Level of abstraction</label>
@@ -177,7 +179,7 @@ export default function AnalyzeResult({ close, create }: PropType) {
                 </div>
                 <div className="w-[380px] border-l border-gray-300 p-4 flex flex-col justify-end">
                     <div className="flex justify-end">
-                        <div className="w-[80%] bg-gray-200 p-2 rounded-lg">Respond via email to a customer who received the wrong item in their order.</div>
+                        <div className="w-[80%] nextgpt__bg_surface p-2 rounded-lg">Respond via email to a customer who received the wrong item in their order.</div>
                     </div>
                     <div className="flex gap-2 mt-4">
                         <div className="min-w-8 max-w-8">

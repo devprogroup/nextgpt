@@ -84,6 +84,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                             </div>
                             <span className="nextgpt__text-muted">Explaination</span>
                         </div>
+                        <div className="nextgpt__bg-surface p-4 rounded-lg">
                         <table>
                             <thead>
                                 <tr>
@@ -102,7 +103,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                         <td className="py-2">{style.start}</td>
                                         <td colSpan={5}>
                                             <div className="relative">
-                                                <div className="bg-gray-200 h-2 absolute w-full rounded-full">
+                                                <div className="bg-gray-200 h-1 absolute w-full rounded-full">
                                                     <div
                                                         className="absolute h-full bg-gray-800 rounded-full"
                                                         style={{
@@ -142,6 +143,8 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                 ))}
                             </tbody>
                         </table>
+                        </div>
+                        
                         <div className="space-y-6">
                             <div className="space-y-2">
                                 <label className="nextgpt__text-muted text-sm">Level of abstraction</label>
@@ -151,7 +154,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                         {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
-                                                className={`rounded-full py-1 px-5 border ${size === abstractness && 'bg-gray-200'}`}
+                                                className={`rounded-full py-1 px-5 border ${size === abstractness && 'bg-gray-100'}`}
                                                 onClick={() => setAbstractness(size)}
                                             >{size}</button>
                                         ))}
@@ -166,7 +169,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                             <button
                                                 key={size}
                                                 onClick={() => setSpecificity(size)}
-                                                className={`rounded-full py-1 px-5 border ${size === specificity && 'bg-gray-200'}`}
+                                                className={`rounded-full py-1 px-5 border ${size === specificity && 'bg-gray-100'}`}
                                             >General</button>
                                         ))}
 
@@ -182,7 +185,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                         {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
-                                                className={`rounded-full py-1 px-5 border ${size === outputLength && 'bg-gray-200'}`}
+                                                className={`rounded-full py-1 px-5 border ${size === outputLength && 'bg-gray-100'}`}
                                                 onClick={() => setOutputLength(size)}
                                             >{size}</button>
                                         ))}
@@ -195,7 +198,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                             <button
                                                 key={size}
                                                 onClick={() => setComplexity(size)}
-                                                className={`rounded-full py-1 px-5 border ${size === complexity && 'bg-gray-200'}`}
+                                                className={`rounded-full py-1 px-5 border ${size === complexity && 'bg-gray-100'}`}
                                             >{size}</button>
                                         ))}
                                     </span>
