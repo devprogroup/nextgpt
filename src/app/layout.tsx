@@ -10,11 +10,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className="app">
-          <Provider store={store}>
-            {children}
-          </Provider>
+      <head>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+          />
+      </head>
+      <body className="app">
+        <Provider store={store}>
+          {children}
+        </Provider>
         
       </body>
     </html>
