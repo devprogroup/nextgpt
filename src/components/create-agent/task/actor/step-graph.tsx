@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback, useMemo } from "react"
+import React, { useState, useMemo } from "react"
 import { useSelector } from "react-redux";
 import {
     ReactFlow,
@@ -13,9 +13,13 @@ import {
 } from '@xyflow/react';
 import { MdRocket, MdCheck, MdOutlineHorizontalRule, MdAdd } from "react-icons/md";
 
-import { StoreType } from "@/types";
+import { StepType, StoreType } from "@/types";
 
-;
+interface StepNodeDataType {
+    step: StepType,
+    expanded: true,
+    toggle: () => void
+}
 
 
 
@@ -41,9 +45,7 @@ function EndNode() {
         </>
     );
 }
-function StepNode() {
-    const [showDetails, setShowDetails] = React.useState<boolean>(true);
-    
+function StepNode({data}:{data: StepNodeDataType}) {
 
     return (
         <>
@@ -57,23 +59,23 @@ function StepNode() {
                             </div>
                         </div>
                         <span className="text-gray-500 ml-2">
-                            ST-2.1 (required)
+                            {data.step.name} (required)
                         </span>
                     </div>
-                    <button onClick={()=>{setShowDetails(!showDetails)}}>
-                        {showDetails ? <MdOutlineHorizontalRule /> : <MdAdd />}
+                    <button onClick={data.toggle}>
+                        {data.expanded ? <MdOutlineHorizontalRule /> : <MdAdd />}
                     </button>
                 </div>
-                {showDetails && (
+                {data.expanded && (
                     <div className="bg-white p-4 rounded-lg border-gray-400 border-2 space-y-4">
                         <div>
-                            <h2 className="text-lg font-semibold">Present yourself</h2>
+                            <h2 className="text-lg font-semibold">{data.step.title}</h2>
                             <p className="nextgpt__text-muted">To introduce oneself to the user and gather the user’s name.</p>
                         </div>
                         <div>
                             <label className="block text-sm nextgpt__text-muted">VERBATIM</label>
                             <div className="p-2 rounded-lg border bofer-gray-200 bg-gray-100">
-                                <div className="text-sm border-l-2 border-gray-400 pl-2">Hello, I’m Nestor , your online assistant. My role is to gather all your personal details for your Orange B2B order intended for businesses & professionals. Once I have everything, I’ll connect you straight away with an Orange advisor who will finalise your request with you on WhatsApp. Let’s get to know each other, what is your name?</div>
+                                <div className="text-sm border-l-2 border-gray-400 pl-2">{data.step.prompt}</div>
                             </div>
                         </div>
                     </div>
@@ -90,26 +92,50 @@ const nodeTypes = { StartNode:StartNode,  StepNode: StepNode, EndNode: EndNode }
 
 export default function StepGraph() {
     const steps = useSelector((state: StoreType) => state.agent.task.script?.steps)
+    const [expanded, setExpanded] = useState<boolean[]>(steps?.map(() => true) || []);
+
+    const toggle = (index: number) => {
+        setExpanded((prev) => {
+            const newExpanded = [...prev];
+            newExpanded[index] = !newExpanded[index];
+            return newExpanded;
+        });
+    }
     const nodes = useMemo<Node[]>(()=>{
         if(!steps) {
             return []
         }
+
         if(steps.length === 0) {
             return [
-            { id: '0', type: 'StartNode', position: { x: 100, y: 0 }, data: { label: '1' } },
-            { id: '1', type: 'EndNode', position: { x: 100, y: 100 }, data: { label: '2' } },
+            { id: '0', type: 'StartNode', position: { x: 100, y: 0 }, data: { label: 'start' } },
+            { id: '1', type: 'EndNode', position: { x: 100, y: 100 }, data: { label: 'end' } },
         ]}
-        return [
-            { id: '0', type: 'StartNode', position: { x: 100, y: 0 }, data: { label: '0' } },
-            ...steps.map((step, index) => ({
+        let top = 100
+        const nodes: {
+            id: string,
+            type: string,
+            position: {
+                x: number,
+                y: number
+            },
+            data: any
+        }[] = [{ id: '0', type: 'StartNode', position: { x: 268, y: 0 }, data: { label: '0' } }]
+
+        steps.forEach((step, index)=>{
+            nodes.push({
                 id: `${index+1}`,
                 type: 'StepNode',
-                position: { x: 100, y: 100 * (index + 1) },
-                data: { label: `${index+1}` }
-            })),
-            { id: `${steps.length+1}`, type: 'EndNode', position: { x: 100, y: 100 * (steps.length + 1) }, data: { label: '2' } },
-        ]
-    }, [steps])
+                position: { x: 100, y: top },
+                data: { step: step, expanded: expanded[index], toggle: () => toggle(index) }
+            })
+            top += expanded[index] ? 360 : 100
+        })
+        nodes.push( { id: `${steps.length+1}`, type: 'EndNode', position: { x: 276, y: top }, data: { label: '2' } })
+
+        return nodes
+        
+    }, [steps, expanded])
     
     const edges = useMemo<Edge[]>(()=>{
         if(!steps)
@@ -126,7 +152,7 @@ export default function StepGraph() {
             })),
         ]
     }, [steps])
-
+    
     return (
         <ReactFlow
             nodes={nodes}

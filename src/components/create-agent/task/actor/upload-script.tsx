@@ -18,6 +18,14 @@ const SCRIPT:ScriptType = {
             context: 'To introduce oneself to the user and gather the user’s name.',
             prompt: 'Hello, I’m Nestor , your online assistant. My role is to gather all your personal details for your Orange B2B order intended for businesses & professionals. Once I have everything, I’ll connect you straight away with an Orange advisor who will finalise your request with you on WhatsApp. Let’s get to know each other, what is your name?',
             skills: ['Airtable'],
+        },
+        {
+            name: 'ST-1.2',
+            required: true,
+            title: 'show yourself',
+            context: 'To introduce oneself to the user and gather the user’s name.',
+            prompt: 'Hello, I’m Nestor , your online assistant. My role is to gather all your personal details for your Orange B2B order intended for businesses & professionals. Once I have everything, I’ll connect you straight away with an Orange advisor who will finalise your request with you on WhatsApp. Let’s get to know each other, what is your name?',
+            skills: ['Airtable'],
         }
     ]
 }
