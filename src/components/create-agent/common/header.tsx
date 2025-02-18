@@ -19,7 +19,7 @@ export default function ProgressHeader() {
                         STEPS.map((it, i)=>(
                             <div
                                 onClick={()=>dispatch(setStep(i))}
-                                className={`cursor-pointer rounded-full flex items-center mx-2 ${step === i ? 'bg-gray-100' : 'border border-gray-200'} p-2`} key={i}>
+                                className={`cursor-pointer rounded-full flex items-center mx-2 ${step === i ? 'nextgpt__bg_surface' : 'border border-gray-200'} p-2`} key={i}>
                                 <span className="h-5 text-[11px] w-5 flex justify-center items-center bg-gray-400 text-white rounded-full">{i+1}</span>
                                 { step === i && <span className="block mx-1 capitalize">{it.key}</span>}
                             </div>
