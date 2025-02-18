@@ -13,14 +13,14 @@ export default function ProgressHeader() {
     return (
         <div className="screen-x-padding py-5 border-b border-gray-200">
             <div className="flex items-center justify-center relative">
-                <h3 className="absolute left-0 text-xl">Creating an agent</h3>
+                <h3 className="absolute left-0 text-[16px] nextgpt__font:semibold">Creating an agent</h3>
                 <div className="flex items-center">
                     {
                         STEPS.map((it, i)=>(
                             <div
                                 onClick={()=>dispatch(setStep(i))}
                                 className={`cursor-pointer rounded-full flex items-center mx-2 ${step === i ? 'bg-gray-100' : 'border border-gray-200'} p-2`} key={i}>
-                                <span className="h-5 text-sm w-5 flex justify-center items-center bg-gray-400 text-white rounded-full">{i+1}</span>
+                                <span className="h-5 text-[11px] w-5 flex justify-center items-center bg-gray-400 text-white rounded-full">{i+1}</span>
                                 { step === i && <span className="block mx-1 capitalize">{it.key}</span>}
                             </div>
                         ))

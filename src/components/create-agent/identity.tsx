@@ -62,30 +62,30 @@ export default function AgentForm() {
                     </label>
                     <input
                         id="firstName"
-                        className="w-full rounded-md focus:outline-none text-3xl"
+                        className="w-full rounded-md focus:outline-none nextgpt__text-2xl"
                         value={identity.firstName}
                         placeholder="John"
                         onChange={(e) => setIdentityValue('firstName', e.target.value)}
                     />
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-0">
                     <label htmlFor="lastName" className="block">
                         Last name
                     </label>
                     <input
                         id="lastName"
-                        className="w-full rounded-md focus:outline-none text-3xl"
+                        className="w-full rounded-md focus:outline-none nextgpt__text-2xl"
                         value={identity.lastName}
                         placeholder="Doe"
                         onChange={(e) => setIdentityValue('lastName', e.target.value)}
                     />
                 </div>
                 <div className="flex items-center">
-                    <span className="mr-4 text-gray-500">Max 3MB</span>
+                    <span className="mr-4 nextgpt__text-color:sub">Max 3MB</span>
                     <button
                         onClick={onUploadClick}
-                        className="w-16 h-16 flex bg-gray-100 rounded-full border border-dashed justify-center items-center text-gray-400">
-                        <BsUpload />
+                        className="w-[56px] h-[56px] flex nextgpt__bg-neutral-25 rounded-full border border-dashed justify-center items-center nextgpt-color-icon-default">
+                        <BsUpload width={20} height={20} />
                     </button>
                 </div>
             </div>
@@ -136,8 +136,8 @@ export default function AgentForm() {
                     <input
                         id="orgDescription"
                         className="nextgpt__input"
-                        value={identity.organizationDescription}
-                        onChange={(e) => setIdentityValue('organizationDescription', e.target.value)}
+                        value={identity.role}
+                        onChange={(e) => setIdentityValue('role', e.target.value)}
                     />
                 </div>
             </div>
@@ -179,7 +179,7 @@ export default function AgentForm() {
                                 className="group flex cursor-default items-center gap-2 rounded-lg p-1 select-none data-[focus]:bg-white"
                             >
                                 <div className="flex items-center gap-2 px-3">
-                                    <Image src={it.icon} alt="icon" className="w-6 h-6 rounded-full" />
+                                    <Image width={20} height={20} src={it.icon} alt="icon" className="w-6 h-6 rounded-full" />
                                     <span>{it.label} {it.isDefault && '(default)'}</span>
                                 </div>
                             </ListboxOption>

@@ -38,8 +38,8 @@ const CreateAgent: React.FC = () => {
                         <div className="space-y-10 flex-grow">
                             {step !== 5 && (
                                 <div>
-                                    <h1 className="nextgpt__agent_title">{STEPS[step].title}</h1>
-                                    <p className="nextgpt__agent_subtitle">{STEPS[step].subtitle}</p>
+                                    <h1 className="nextgpt__title">{STEPS[step].title}</h1>
+                                    <p className="nextgpt__subtitle">{STEPS[step].subtitle}</p>
                                 </div>
                             )}
                                 
@@ -61,20 +61,29 @@ const CreateAgent: React.FC = () => {
                         <div className="rounded-3xl bg-white p-6  min-w-2/3 shadow-lg">
                             <div className="flex flex-col items-center gap-4">
                                 {agent.identity.avatarUrl ? (
-                                    <Image src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-24 w-24 object-cover" />
+                                    <Image
+                                        width={112}
+                                        height={112}
+                                        src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-28 h-28" />
                                 ) : (
-                                    <div className="flex h-28 w-28 items-center justify-center rounded-full bg-gray-100 text-3xl font-medium">
+                                    <div className="flex h-28 w-28 items-center justify-center rounded-full nextgpt__bg-neutral-100 text-3xl font-medium">
                                     {agent.identity.firstName[0]}
                                     {agent.identity.lastName[0]}
                                 </div>
                                 )}
                                 
                                 
-                                <div className="text-center text-gray-400">
+                                <div className="text-center">
                                     <h3 className="text-4xl font-medium">
-                                        {agent.identity.firstName || 'John'} {agent.identity.lastName || 'Doe'}
+                                        {agent.identity.firstName ? (<span>{agent.identity.firstName}</span>) : <span className="nextgpt__text-color:placeholder">John</span>}
+                                        &nbsp;
+                                        {agent.identity.lastName ? (<span>{agent.identity.lastName}</span>) : <span className="nextgpt__text-color:placeholder">Doe</span>}
                                     </h3>
-                                    <p className="text-2xl">{agent.identity.role || 'Job title'} @ {agent.identity.organization || 'Company'}</p>
+                                    <p className="text-2xl">
+                                        {agent.identity.role ? (<span>{agent.identity.role}</span>) : <span className="nextgpt__text-color:placeholder">Job Title</span>}
+                                        <span className={`mx-2 ${agent.identity.organization && agent.identity.role ? '' : 'nextgpt__text-color:placeholder'}`}>@</span>
+                                        {agent.identity.organization ? (<span>{agent.identity.organization}</span>) : <span className="nextgpt__text-color:placeholder">Company</span>}
+                                    </p>
                                 </div>
                             </div>
                         </div>

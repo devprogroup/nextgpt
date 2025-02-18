@@ -2,21 +2,48 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --x-padding: 4rem;
-}
 
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family:  'Inter';
+  @apply nextgpt__text-color:main  bg-white nextgpt__text-size:md;
 }
 
+
+.nextgpt__text-size\:md {
+  @apply text-[14px];
+}
+.nextgpt__text-xl {
+  @apply text-[20px];
+}
+.nextgpt__text-2xl {
+  @apply text-[32px];
+}
+
+
+.nextgpt__text-color\:main {
+  @apply text-[#0A0D14];
+}
+
+.nextgpt__text-color\:sub {
+  @apply text-[#525866];
+}
+
+.nextgpt__text-color\:placeholder {
+  @apply text-[#868B98];
+}
+
+.nextgpt__font\:bold {
+  @apply font-[600];
+}
+.nextgpt__font\:semibold {
+  @apply font-[500];
+}
+
+.nextgpt-color-icon-default {
+  @apply text-[#B4B7C1];
+}
 .screen-x-padding {
-  padding-left: var(--x-padding);
-  padding-right: var(--x-padding);
+  @apply px-[4rem]
 }
 
 .nextgpt__btn-rounded {
@@ -24,7 +51,8 @@ body {
 }
 
 .nextgpt__btn-rounded.active {
-  @apply bg-gray-900 text-white
+  @apply bg-gray-900 text-white;
+  line-height: 24px;
 }
 .nextgpt__input {
   @apply w-full rounded-md border border-gray-300 px-3 py-2 focus:border-gray-900 focus:outline-none
@@ -33,11 +61,15 @@ body {
   @apply rounded-lg bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800
 }
 
-.nextgpt__agent_title {
-  @apply text-3xl font-semibold
+.nextgpt__title {
+  @apply nextgpt__font:bold nextgpt__text-main nextgpt__text-xl; 
 }
-.nextgpt__agent_subtitle {
-  @apply nextgpt__text-muted
+
+label {
+  @apply nextgpt__font:semibold
+}
+.nextgpt__subtitle {
+  @apply nextgpt__text-color:sub nextgpt__text-size:md;
 }
 .nextgpt__form-group {
   @apply space-y-2
@@ -72,6 +104,9 @@ body {
 }
 
 .nextgpt__bg-surface {
-  @apply bg-gray-100
+  @apply bg-[#F7F7F8];
+}
+.nextgpt__bg-neutral-100{
+  @apply bg-[#EEEFF1];
 }
 
