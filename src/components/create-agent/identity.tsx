@@ -172,7 +172,7 @@ export default function AgentForm() {
                     <ListboxOptions
                         anchor="bottom"
                         transition
-                        className="bg-white w-[var(--button-width)] rounded-xl border [--anchor-gap:var(--spacing-1)] focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 border"
+                        className="mt-1 bg-white w-[var(--button-width)] rounded-xl border [--anchor-gap:var(--spacing-1)] focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 border"
                     >
                         {LLM_OPTIONS.map((it) => (
                             <ListboxOption
@@ -180,7 +180,7 @@ export default function AgentForm() {
                                 value={it.key}
                                 className="group flex cursor-default items-center gap-2 rounded-lg p-1 select-none data-[focus]:bg-white"
                             >
-                                <div className="flex items-center gap-2 px-3">
+                                <div className="flex items-center gap-2 px-3 py-1">
                                     <Image width={20} height={20} src={it.icon} alt="icon" className="w-6 h-6 rounded-full" />
                                     <span>{it.label} {it.isDefault && '(default)'}</span>
                                 </div>

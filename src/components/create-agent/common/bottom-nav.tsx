@@ -8,10 +8,11 @@ import { STEPS } from "@/constants";
 import { StoreType } from "@/types";
 
 interface PropType {
-    valid:boolean
+    valid: boolean,
+    canSkip?: boolean
 }
 
-const BottomNav: React.FC<PropType> = ({ valid }: PropType) => {
+const BottomNav: React.FC<PropType> = ({ valid, canSkip = false }: PropType) => {
     const step = useSelector((state: StoreType) => state.agent.step);
     const dispatch = useDispatch();
     const onNext = () => {
@@ -31,14 +32,23 @@ const BottomNav: React.FC<PropType> = ({ valid }: PropType) => {
                 >
                     <FaArrowLeft />
                 </button>
-            ): <span></span>}
-            {step < STEPS.length - 1 ? (
-                <button
-                    onClick={onNext}
-                    className="nextgpt__btn_dark nextgpt__btn_size_md"
-                >Continue</button>
-            ): <span></span>}
-            
+            ) : <span></span>}
+            <div className="flex gap-4 items-center">
+                {canSkip && (
+                    <button
+                        onClick={onNext}
+                        className="nextgpt__btn_primary nextgpt__btn_size_md"
+                    >Skip & continue</button>
+                )}
+                {step < STEPS.length - 1 && (
+                    <button
+                        onClick={onNext}
+                        className="nextgpt__btn_dark nextgpt__btn_size_md"
+                    >Continue</button>
+                )}
+
+
+            </div>
         </div>
     )
 }

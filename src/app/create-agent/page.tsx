@@ -52,6 +52,7 @@ const CreateAgent: React.FC = () => {
                         </div>
                         <BottomNav
                             valid={true}
+                            canSkip={step === 3}
                         />
                         </div>
                     <input type="file" accept="image/*" hidden id="avatar-selector" onChange={onAvatarChange} />

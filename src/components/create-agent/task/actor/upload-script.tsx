@@ -73,7 +73,7 @@ export default function UploadScript() {
             >
                 <div className="flex justify-center items-center">
                     <div className="relative">
-                        <button className="nextgpt__btn_primary">Upload Script</button>
+                        <button className="nextgpt__btn_primary nextgpt__btn_size_sm">Upload Script</button>
                         <input
                             type="file"
                             className="absolute inset-0 w-full h-full opacity-0"

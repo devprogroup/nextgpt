@@ -29,7 +29,7 @@ export function ProgressModal({
                     <div className="space-y-6">
                         {bannerImg && (
                             <div className="flex items-center justify-center">
-                                <Image src={bannerImg} alt={title} className="h-24" />
+                                <Image src={bannerImg} width={160} height={160} alt={title} className="h-24" />
                             </div>
                         )}
                         {title && (
