@@ -39,7 +39,7 @@ const OfferAlternative: React.FC = () => {
     ) : (
         <div className="border-dashed border py-2 px-4 rounded-lg flex justify-between items-center">
             <p className="nextgpt__text-muted text-sm">No alternatives available.</p>
-            <button className="nextgpt__btn-primary" onClick={onAddAlternativeClick}>Add alternative</button>
+            <button className="nextgpt__btn_primary" onClick={onAddAlternativeClick}>Add alternative</button>
             <AlternativeModal isOpen={isModalOpen} close={() => setIsModalOpen(false)} />
         </div>
     )

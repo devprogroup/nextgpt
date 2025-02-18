@@ -84,7 +84,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                             </div>
                             <span className="nextgpt__text-muted">Explaination</span>
                         </div>
-                        <div className="nextgpt__bg-surface p-4 rounded-lg">
+                        <div className="nextgpt__bg_surface p-4 rounded-lg">
                         <table>
                             <thead>
                                 <tr>
@@ -210,7 +210,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                 </div>
             </div>
             <div className="flex justify-between py-4 px-4 border-t border-gray-300">
-                <button className="nextgpt__btn-primary">Cancel</button>
+                <button className="nextgpt__btn_primary">Cancel</button>
                 <button className="nextgpt__btn-dark" onClick={onUseStyle}>Use style</button>
             </div>
         </div>

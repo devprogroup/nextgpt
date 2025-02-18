@@ -28,7 +28,7 @@ export function TaskModal({isOpen, close}:{isOpen: boolean, close: ()=>void}) {
                 close={close}
                 title="What type of work will your agent do?"
             >
-                <div className="p-6 pt-0">
+                <div className="p-6 pt-0 w-[800px]">
                     <div className="grid grid-cols-2 gap-4">
                         {TASKS.map((it, i)=>(
                             <div
@@ -50,8 +50,8 @@ export function TaskModal({isOpen, close}:{isOpen: boolean, close: ()=>void}) {
                                         <div className="-mt-6 mb-1">
                                             {it.icon}
                                         </div>
-                                        <h2 className="text-lg font-bold mb-1">{it.title}</h2>
-                                        <div className="nextgpt__text-muted text-sm">
+                                        <h2 className="nextgpt__text-size_lg mb-1 nextgpt__font_semibold">{it.title}</h2>
+                                        <div className="nextgpt__text-color_sub">
                                             <p className="mb-1">{it.subtitle}</p>
                                             <p>Use cases include:</p>
                                             <ul className="list-disc list-inside">

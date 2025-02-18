@@ -5,12 +5,18 @@
 
 body {
   font-family:  'Inter';
-  @apply nextgpt__text-color:main  bg-white nextgpt__text-size:md;
+  @apply nextgpt__text-color_main  bg-white nextgpt__text-size_md;
 }
 
+.nextgpt__text-size_sm {
+  @apply text-[12px];
+}
 
-.nextgpt__text-size\:md {
+.nextgpt__text-size_md {
   @apply text-[14px];
+}
+.nextgpt__text-size_lg {
+  @apply text-[16px];
 }
 .nextgpt__text-xl {
   @apply text-[20px];
@@ -20,35 +26,81 @@ body {
 }
 
 
-.nextgpt__text-color\:main {
+.nextgpt__text-color_main {
   @apply text-[#0A0D14];
 }
 
-.nextgpt__text-color\:sub {
+.nextgpt__text-color_sub {
   @apply text-[#525866];
 }
+.nextgpt__text-color_secondary {
+  @apply text-[#008F82];
+}
 
-.nextgpt__text-color\:placeholder {
+.nextgpt__text-color_placeholder {
   @apply text-[#868B98];
 }
 
-.nextgpt__font\:bold {
+.nextgpt__font_bold {
   @apply font-[600];
 }
-.nextgpt__font\:semibold {
+.nextgpt__font_semibold {
   @apply font-[500];
 }
-
-.nextgpt-color-icon-default {
+.nextgpt__font_regular {
+  @apply font-[300]
+}
+.nextgpt__text-color_icon-default {
   @apply text-[#B4B7C1];
+}
+
+.nextgpt__bg_gray-light {
+  @apply bg-gray-100
+}
+
+.nextgpt__bg_surface {
+  @apply bg-[#F7F7F8];
+}
+.nextgpt__bg_neutral-50 {
+  @apply bg-[#F7F7F8];
+}
+.nextgpt__bg_neutral-100 {
+  @apply bg-[#EEEFF1];
+}
+
+.nextgpt__btn {
+  @apply px-2 py-1 rounded-lg nextgpt__text-size_sm
+}
+
+.nextgpt__btn_primary {
+  @apply nextgpt__btn;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.02) 100%), #F7F7F8;
+  box-shadow: 0px 1px 2px -1px rgba(16, 24, 40, 0.05), 0px 2px 4px -2px rgba(16, 24, 40, 0.1), 0px 0px 0px 1px #EEEFF1, inset 0px 1px 0px rgba(255, 255, 255, 0.64);
+}
+
+.nextgpt__btn_light {
+  @apply nextgpt__btn nextgpt__text-color_secondary;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0%, rgba(0, 0, 0, 0.01) 100%), #FFFFFF;
+  opacity: 0.8;
+  box-shadow: 0px 1px 2px -1px rgba(16, 24, 40, 0.05), 0px 2px 4px -2px rgba(16, 24, 40, 0.1), 0px 0px 0px 1px #EEEFF1, inset 0px -1px 0px #F7F7F8;
+  border-radius: 6px;
+}
+
+.nextgpt__btn_secondary {
+  @apply nextgpt__btn;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.02) 100%), #FFFFFF;
+  box-shadow: 0px 1px 2px -1px rgba(16, 24, 40, 0.05), 0px 2px 4px -2px rgba(16, 24, 40, 0.1), 0px 0px 0px 1px #EEEFF1, inset 0px -1px 0px #F7F7F8;
+  border-radius: 6px;
+
+}
+.nextgpt__btn-rounded {
+  @apply rounded-full px-3 py-1 border bg-white border-gray-200 hover:bg-gray-200 text-gray-700 nextgpt__text-size_md
 }
 .screen-x-padding {
   @apply px-[4rem]
 }
 
-.nextgpt__btn-rounded {
-  @apply rounded-full px-3 py-1 border bg-white border-gray-200 hover:bg-gray-200 text-gray-700
-}
+
 
 .nextgpt__btn-rounded.active {
   @apply bg-gray-900 text-white;
@@ -62,14 +114,14 @@ body {
 }
 
 .nextgpt__title {
-  @apply nextgpt__font:bold nextgpt__text-main nextgpt__text-xl; 
+  @apply nextgpt__font_bold nextgpt__text-color_main nextgpt__text-xl; 
 }
 
 label {
-  @apply nextgpt__font:semibold
+  @apply nextgpt__font_semibold
 }
 .nextgpt__subtitle {
-  @apply nextgpt__text-color:sub nextgpt__text-size:md;
+  @apply nextgpt__text-color_sub nextgpt__text-size_md;
 }
 .nextgpt__form-group {
   @apply space-y-2
@@ -83,30 +135,12 @@ label {
 .nextgpt__text-muted {
   color: #525866;
 }
-.nextgpt__text-main {
-  color: #0A0D14
-}
 
 .nextgpt__text-secondary {
   color: #008F82
 }
 
-.nextgpt__btn-primary {
-  @apply bg-gray-100 px-3 py-1 rounded-lg nextgpt__bg-surface border
-}
 
-.nextgpt__agent_btn-secondary {
-  @apply bg-white px-3 py-1 rounded-lg nextgpt__agent_border nextgpt__text-muted
-}
 
-.nextgpt__bg-gray-light {
-  @apply bg-gray-100
-}
 
-.nextgpt__bg-surface {
-  @apply bg-[#F7F7F8];
-}
-.nextgpt__bg-neutral-100{
-  @apply bg-[#EEEFF1];
-}
 

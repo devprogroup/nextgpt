@@ -60,6 +60,7 @@ export default function Skills() {
                             className="w-full pl-9 rounded-lg border-none bg-white/5 py-1.5 pr-8 pl-3 text-sm/6  focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
                             displayValue={(person:SkillType) => person?.name}
                             onChange={(event) => setQuery(event.target.value)}
+                            placeholder="Search over 100+ tasks agents can perform"
                         />
                     </div>
 
@@ -100,8 +101,8 @@ export default function Skills() {
                 ) : (
                     <div className="nextgpt__agent_border border-dashed py-6 rounded-md text-center">
                         <p className="text-center font-semibold">Add your first skill</p>
-                        <p className="nextgpt__agent_text-muted mb-6">Give your agent more context and resource to handle tasks.</p>
-                        <button className="bg-gray-200 py-1 px-3 rounded-lg">Create skill</button>
+                        <p className="nextgpt__text-color_sub mb-6">Give your agent more context and resource to handle tasks.</p>
+                        <button className="nextgpt__btn_primary">Create skill</button>
                     </div>    
                 )}
                 

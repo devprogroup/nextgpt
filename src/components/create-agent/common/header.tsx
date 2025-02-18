@@ -13,7 +13,7 @@ export default function ProgressHeader() {
     return (
         <div className="screen-x-padding py-5 border-b border-gray-200">
             <div className="flex items-center justify-center relative">
-                <h3 className="absolute left-0 text-[16px] nextgpt__font:semibold">Creating an agent</h3>
+                <h3 className="absolute left-0 text-[16px] nextgpt__font_semibold">Creating an agent</h3>
                 <div className="flex items-center">
                     {
                         STEPS.map((it, i)=>(

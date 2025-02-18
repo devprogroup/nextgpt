@@ -81,10 +81,10 @@ export default function AgentForm() {
                     />
                 </div>
                 <div className="flex items-center">
-                    <span className="mr-4 nextgpt__text-color:sub">Max 3MB</span>
+                    <span className="mr-4 nextgpt__text-color_sub">Max 3MB</span>
                     <button
                         onClick={onUploadClick}
-                        className="w-[56px] h-[56px] flex nextgpt__bg-neutral-25 rounded-full border border-dashed justify-center items-center nextgpt-color-icon-default">
+                        className="w-[56px] h-[56px] flex nextgpt__bg-neutral-25 rounded-full border border-dashed justify-center items-center nextgpt__text-color_icon-default">
                         <BsUpload width={20} height={20} />
                     </button>
                 </div>
@@ -124,6 +124,7 @@ export default function AgentForm() {
                     <input
                         id="organization"
                         className="nextgpt__input"
+                        placeholder="Apple"
                         value={identity.organization}
                         onChange={(e) => setIdentityValue('organization', e.target.value)}
                     />
@@ -131,13 +132,14 @@ export default function AgentForm() {
                 <div className="space-y-2">
                     <label htmlFor="orgDescription" className="flex justify-between">
                         <span>What does this organization do?</span>
-                        <span className="text-gray-500">(optional)</span>
+                        <span className="nextgpt__text-color_placeholder nextgpt__font_regular">(optional)</span>
                     </label>
                     <input
                         id="orgDescription"
                         className="nextgpt__input"
-                        value={identity.role}
-                        onChange={(e) => setIdentityValue('role', e.target.value)}
+                        placeholder="Design consultation"
+                        value={identity.organizationDescription}
+                        onChange={(e) => setIdentityValue('organizationDescription', e.target.value)}
                     />
                 </div>
             </div>

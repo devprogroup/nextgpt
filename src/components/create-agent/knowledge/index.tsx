@@ -67,7 +67,7 @@ export default function Knowledge() {
                         <div id="topic" className="nextgpt__agent_border border-dashed py-6 rounded-md text-center">
                             <p className="text-center font-semibold">Add your first knowledge source</p>
                             <p className="nextgpt__agent_text-muted mb-6">Give your agent more context and resource to handle tasks.</p>
-                            <button className="bg-gray-200 py-1 px-3 rounded-lg" onClick={() => { setShowSubscriptionModal(true) }}>New knowledge</button>
+                            <button className="nextgpt__btn_primary" onClick={() => { setShowSubscriptionModal(true) }}>New knowledge</button>
                         </div>
                     ) : (
                         <div>{
@@ -115,16 +115,17 @@ export default function Knowledge() {
                         Set parameters
                     </label>
                     <div id="parameters">
-                        <ul>
+                        <ul className="space-y-2">
                             {
                                 PARAMETERS.map((it, i) => (
                                     <li key={it.key}>
-                                        <label>
+                                        <label className="nextgpt__font_regular">
                                             <input
                                                 type="checkbox"
                                                 onChange={(e) => { onParameterChange(it.key, e.target.checked) }}
                                                 checked={knowledge.parameters.includes(it.key)}
-                                            /> {it.label}
+                                            />
+                                            <span className="ml-3">{it.label}</span>
                                         </label>
                                     </li>
                                 ))

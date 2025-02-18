@@ -32,7 +32,7 @@ export default function Modal({
                 <DialogPanel className="border bg-white rounded-3xl overflow-hidden">
                     {showTitle && (
                         <DialogTitle className="px-6 py-3 flex justify-between items-center">
-                            <div className="font-bold text-xl mr-6 flex items-center">
+                            <div className="font-bold text-xl mr-6 flex items-center nextgpt__text-size:xl nextgpt__font_bold">
                                 {titleIcon}
                                 <span className={titleIcon ? 'ml-2' : ''}>{title}</span>
                             </div>

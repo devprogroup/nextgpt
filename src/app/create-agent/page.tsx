@@ -57,7 +57,7 @@ const CreateAgent: React.FC = () => {
                     <input type="file" accept="image/*" hidden id="avatar-selector" onChange={onAvatarChange} />
 
                     {/* Preview Card */}
-                    <div className="h-full flex justify-center items-center nextgpt__bg-surface rounded-3xl">
+                    <div className="h-full flex justify-center items-center nextgpt__bg_surface rounded-3xl">
                         <div className="rounded-3xl bg-white p-6  min-w-2/3 shadow-lg">
                             <div className="flex flex-col items-center gap-4">
                                 {agent.identity.avatarUrl ? (
@@ -66,7 +66,7 @@ const CreateAgent: React.FC = () => {
                                         height={112}
                                         src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-28 h-28" />
                                 ) : (
-                                    <div className="flex h-28 w-28 items-center justify-center rounded-full nextgpt__bg-neutral-100 text-3xl font-medium">
+                                    <div className="flex h-28 w-28 items-center justify-center rounded-full nextgpt__bg_neutral-100 text-3xl font-medium">
                                     {agent.identity.firstName[0]}
                                     {agent.identity.lastName[0]}
                                 </div>
@@ -75,14 +75,14 @@ const CreateAgent: React.FC = () => {
                                 
                                 <div className="text-center">
                                     <h3 className="text-4xl font-medium">
-                                        {agent.identity.firstName ? (<span>{agent.identity.firstName}</span>) : <span className="nextgpt__text-color:placeholder">John</span>}
+                                        {agent.identity.firstName ? (<span>{agent.identity.firstName}</span>) : <span className="nextgpt__text-color_placeholder">John</span>}
                                         &nbsp;
-                                        {agent.identity.lastName ? (<span>{agent.identity.lastName}</span>) : <span className="nextgpt__text-color:placeholder">Doe</span>}
+                                        {agent.identity.lastName ? (<span>{agent.identity.lastName}</span>) : <span className="nextgpt__text-color_placeholder">Doe</span>}
                                     </h3>
                                     <p className="text-2xl">
-                                        {agent.identity.role ? (<span>{agent.identity.role}</span>) : <span className="nextgpt__text-color:placeholder">Job Title</span>}
-                                        <span className={`mx-2 ${agent.identity.organization && agent.identity.role ? '' : 'nextgpt__text-color:placeholder'}`}>@</span>
-                                        {agent.identity.organization ? (<span>{agent.identity.organization}</span>) : <span className="nextgpt__text-color:placeholder">Company</span>}
+                                        {agent.identity.role ? (<span>{agent.identity.role}</span>) : <span className="nextgpt__text-color_placeholder">Job Title</span>}
+                                        <span className={`mx-2 ${agent.identity.organization && agent.identity.role ? '' : 'nextgpt__text-color_placeholder'}`}>@</span>
+                                        {agent.identity.organization ? (<span>{agent.identity.organization}</span>) : <span className="nextgpt__text-color_placeholder">Company</span>}
                                     </p>
                                 </div>
                             </div>

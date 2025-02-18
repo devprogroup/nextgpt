@@ -209,7 +209,7 @@ const SubscriptionModal: React.FC<PropType> = ({ isOpen, close }) => {
                                 <p className="nextgpt__text-muted">{documents.length} documents</p>
                                 <ul className="space-y-2">
                                     { documents.map((doc, i) => (
-                                        <li key={i} className="flex items-center gap-2 nextgpt__bg-gray-light p-4 rounded-lg">
+                                        <li key={i} className="flex items-center gap-2 nextgpt__bg_gray-light p-4 rounded-lg">
                                             <img src="/create-agent/knowledge/pdf.png" alt="pdf" className="h-8 w-8 shadow-lg" />
                                             <span className="">{doc.name}</span>
                                             <span className="text-gray-500">{doc.size}</span>
@@ -223,7 +223,7 @@ const SubscriptionModal: React.FC<PropType> = ({ isOpen, close }) => {
 
                 </div>
                 <div className='flex justify-between px-6 py-4'>
-                    <button className="nextgpt__btn-primary" onClick={close}>Cancel</button>
+                    <button className="nextgpt__btn_primary" onClick={close}>Cancel</button>
                     <button className="nextgpt__btn-dark" onClick={onOk}>Add topic</button>
                 </div>
             </Modal>

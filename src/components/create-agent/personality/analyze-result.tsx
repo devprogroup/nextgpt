@@ -56,7 +56,7 @@ export default function AnalyzeResult({ close, create }: PropType) {
 
                 <div className="p-4">
                     <div className="space-y-6">
-                        <div className="nextgpt__bg-surface p-4 rounded-lg">
+                        <div className="nextgpt__bg_surface p-4 rounded-lg">
                             <table>
                                 <thead>
                                     <tr>

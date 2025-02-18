@@ -26,10 +26,10 @@ export const TASKS: TaskItemType[] = [
         ],
         maskImage: '/create-agent/actor.png',
         bannerComponent: (
-            <div className="w-60 rounded-xl bg-white p-4 shadow-md">
-                <label className="flex items-center nextgpt__text-secondary text-sm"><MdCheckBox /><span className="ml-2">ST-1.2</span></label>
-                <h1 className="text-lg">Title of step</h1>
-                <p className="nextgpt__text-muted text-sm">Description of this step</p>
+            <div className="w-48 rounded-xl bg-white p-3 shadow-md">
+                <label className="flex items-center nextgpt__text-secondary nextgpt__text-size_sm"><MdCheckBox /><span className="ml-2">ST-1.2</span></label>
+                <h1 className="nextgpt__text-size_md">Title of step</h1>
+                <p className="nextgpt__text-muted nextgpt__text-size_sm">Description of this step</p>
             </div>
         )
     },
@@ -44,7 +44,7 @@ export const TASKS: TaskItemType[] = [
         ],
         maskImage: '/create-agent/collector.png',
         bannerComponent: (
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center  nextgpt__text-size_sm">
                 <div className="rounded-xl bg-white px-4 py-1 flex items-center shadow-md">
                     <MdLocationOn fill="#00B8A7" />
                     <span className="ml-2">Address</span>
@@ -74,8 +74,8 @@ export const TASKS: TaskItemType[] = [
         bannerComponent: (
             <div className="w-full p-10">
                 <div className="rounded-xl bg-white px-4 py-3 show-md flex items-center">
-                    <label className="bg-indigo-400 text-xl p-0.5 rounded-md"><MdBolt fill="#FFFFFF" /></label>
-                    <span className="ml-2 font-semibold">Research a company</span>
+                    <label className="bg-[#25C1FF] p-0.5 rounded-md"><MdBolt fill="#FFFFFF" /></label>
+                    <span className="ml-2 font-semibold  nextgpt__text-size_sm">Research a company</span>
                 </div>
             </div>
 
@@ -92,7 +92,7 @@ export const TASKS: TaskItemType[] = [
         ],
         maskImage: '/create-agent/supporter.png',
         bannerComponent: (
-            <div className="w-full px-10 space-y-4">
+            <div className="w-full px-10 space-y-4 nextgpt__text-size_sm">
                 <div className="flex justify-end">
                     <p className="bg-gray-900 text-white py-2 px-4 rounded-full rounded-br-none">How long does a delivery take?</p>
                 </div>
@@ -127,6 +127,7 @@ export default function Task() {
                     id="purpose"
                     className="nextgpt__input"
                     value={task.purpose}
+                    placeholder="“To answer inquiries about customer’s purchase”"
                     onChange={(e) => setTaskValue('purpose', e.target.value)}
                 />
             </div>
@@ -149,30 +150,32 @@ export default function Task() {
                     <div className="flex items-center">
                         {task.type && TASKS.find(it => it.type === task.type)?.icon}
                         <span className="ml-2">{task.type && TASKS.find(it => it.type === task.type)?.label}</span>
+                        {task.type === null && <span className="nextgpt__text-color_placeholder">No type selected</span>}
                     </div>
                     <button
-                        className="border px-2 py-1 rounded-lg"
+                        className="nextgpt__btn_secondary"
                         onClick={() => setIsOpen(true)}
                     >{task.type ? 'Change' : 'Select type'}</button>
                 </div>
                 {task.type === 'actor' && (
                     <div className="flex h-12 justify-between items-center rounded-lg overflow-hidden nextgpt__agent_border">
                         <div className="flex items-center h-full">
-                            <label className="text-xl bg-gray-100 h-full w-12 flex items-center justify-center"><MdInfo fill="#B4B7C1" /></label>
+                            <label className="text-xl nextgpt__bg_neutral-100 h-full w-12 flex items-center justify-center"><MdInfo fill="#B4B7C1" /></label>
                             <span className="ml-2">Start from our script template</span>
                         </div>
-                        <button className="mr-3 nextgpt__text-muted font-semibold">Download template</button>
+                        <button className="mr-3 nextgpt__text-color_secondary">Download template</button>
                     </div>
                 )}
                 {task.type === 'collector' && (
                     <div className="flex h-12 justify-between items-center rounded-lg overflow-hidden nextgpt__agent_border">
                         <div className="flex items-center h-full">
-                            <label className="text-xl bg-gray-100 h-full w-12 flex items-center justify-center"><MdInfo fill="#B4B7C1" /></label>
+                            <label className="text-xl nextgpt__bg_neutral-100 h-full w-12 flex items-center justify-center"><MdInfo fill="#B4B7C1" /></label>
                             <span className="ml-2">Start from our excel template</span>
                         </div>
-                        <button className="mr-3 nextgpt__text-muted font-semibold">Download template</button>
+                        <button className="mr-3 nextgpt__text-color_secondary">Download template</button>
                     </div>
                 )}
+                
 
             </div>
             {task.type === 'actor' && <Actor /> }
