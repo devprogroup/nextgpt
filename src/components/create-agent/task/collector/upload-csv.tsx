@@ -68,10 +68,10 @@ export default function UploadCsv({onAddManually}:PropType) {
                 subtitle="Drag & drop a CSV or add fields manually."
             >
                 <div className="flex justify-center items-center">
-                    <button className="nextgpt__btn_primary" onClick={onAddManually}>Add manually</button>
+                    <button className="nextgpt__btn_primary nextgpt__btn_size_sm" onClick={onAddManually}>Add manually</button>
                     <span className="mx-4">or</span>
                     <div className="relative">
-                        <button className="nextgpt__btn_light">Import a CSV</button>
+                        <button className="nextgpt__btn_light nextgpt__btn_size_sm">Import a CSV</button>
                         <input
                             type="file"
                             className="absolute inset-0 w-full h-full opacity-0"

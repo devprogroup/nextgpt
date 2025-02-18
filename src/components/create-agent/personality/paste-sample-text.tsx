@@ -46,7 +46,7 @@ export default function PasteSampleText({ close, onAnalyze }: PropType) {
                     
                     </div>
                     <div className="flex justify-end">
-                        <button className="nextgpt__btn-dark" onClick={onAnalyze}>Analyze</button>
+                        <button className="nextgpt__btn_dark nextgpt__btn_size_md" onClick={onAnalyze}>Analyze</button>
                     </div>
                 </div>
             </div>

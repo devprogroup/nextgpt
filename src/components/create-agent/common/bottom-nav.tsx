@@ -35,7 +35,7 @@ const BottomNav: React.FC<PropType> = ({ valid }: PropType) => {
             {step < STEPS.length - 1 ? (
                 <button
                     onClick={onNext}
-                    className="nextgpt__btn-dark"
+                    className="nextgpt__btn_dark nextgpt__btn_size_md"
                 >Continue</button>
             ): <span></span>}
             

@@ -67,7 +67,7 @@ export default function Knowledge() {
                         <div id="topic" className="nextgpt__agent_border border-dashed py-6 rounded-md text-center">
                             <p className="text-center font-semibold">Add your first knowledge source</p>
                             <p className="nextgpt__agent_text-muted mb-6">Give your agent more context and resource to handle tasks.</p>
-                            <button className="nextgpt__btn_primary" onClick={() => { setShowSubscriptionModal(true) }}>New knowledge</button>
+                            <button className="nextgpt__btn_primary nextgpt__btn_size_sm" onClick={() => { setShowSubscriptionModal(true) }}>New knowledge</button>
                         </div>
                     ) : (
                         <div>{
@@ -94,7 +94,7 @@ export default function Knowledge() {
                                 <button
                                     key={it.key}
                                     onClick={() => { setKnowledgeValue('alternativeType', it.key) }}
-                                    className={`nextgpt__btn-rounded ${knowledge.alternativeType === it.key && "active"}`}
+                                    className={`nextgpt__button-selector ${knowledge.alternativeType === it.key && "active"}`}
                                 >
                                     {it.label}
                                 </button>

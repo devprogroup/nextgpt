@@ -102,7 +102,7 @@ export default function Skills() {
                     <div className="nextgpt__agent_border border-dashed py-6 rounded-md text-center">
                         <p className="text-center font-semibold">Add your first skill</p>
                         <p className="nextgpt__text-color_sub mb-6">Give your agent more context and resource to handle tasks.</p>
-                        <button className="nextgpt__btn_primary">Create skill</button>
+                        <button className="nextgpt__btn_primary nextgpt__btn_size_sm">Create skill</button>
                     </div>    
                 )}
                 

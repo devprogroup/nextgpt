@@ -11,8 +11,8 @@ export default function Review() {
             <p className="nextgpt__text-color_sub nextgpt__text-size_lg">Review all of your agent skills, description and objective before creating it</p>
             <div className="h-40"></div>
             <div className="flex gap-4">
-                <button className="nextgpt__btn_primary nextgpt__text-color_sub w-9 flex justify-center items-center"><FaArrowLeft /></button>
-                <button className="nextgpt__btn-dark flex-grow">Create Ivan</button>
+                <button className="nextgpt__btn_primary nextgpt__btn_size_md nextgpt__text-color_sub w-9 flex justify-center items-center"><FaArrowLeft /></button>
+                <button className="nextgpt__btn_dark nextgpt__btn_size_md flex-grow">Create Ivan</button>
             </div>
         </div>
     )

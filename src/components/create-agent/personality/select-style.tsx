@@ -45,8 +45,8 @@ export default function SelectStyle({ onUseStyle }: PropType) {
     })
     
     return (
-        <div>
-            <div className="flex">
+        <div className="flex flex-col h-full">
+            <div className="flex flex-grow">
                 <div className="w-[280px] bg-gray-200 border-r border-gray-300 p-4 relative">
                     <h2 className="text-gray-500 text-sm p-2">Styles</h2>
                     <ul>
@@ -154,7 +154,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                         {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
-                                                className={`rounded-full py-1 px-5 border ${size === abstractness && 'bg-gray-100'}`}
+                                                className={`rounded-full py-1 px-5 border ${size === abstractness && 'nextgpt__bg_teal'}`}
                                                 onClick={() => setAbstractness(size)}
                                             >{size}</button>
                                         ))}
@@ -169,7 +169,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                             <button
                                                 key={size}
                                                 onClick={() => setSpecificity(size)}
-                                                className={`rounded-full py-1 px-5 border ${size === specificity && 'bg-gray-100'}`}
+                                                className={`rounded-full py-1 px-5 border ${size === specificity && 'nextgpt__bg_teal'}`}
                                             >General</button>
                                         ))}
 
@@ -185,7 +185,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                         {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
-                                                className={`rounded-full py-1 px-5 border ${size === outputLength && 'bg-gray-100'}`}
+                                                className={`rounded-full py-1 px-5 border ${size === outputLength && 'nextgpt__bg_teal'}`}
                                                 onClick={() => setOutputLength(size)}
                                             >{size}</button>
                                         ))}
@@ -198,20 +198,19 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                             <button
                                                 key={size}
                                                 onClick={() => setComplexity(size)}
-                                                className={`rounded-full py-1 px-5 border ${size === complexity && 'bg-gray-100'}`}
+                                                className={`rounded-full py-1 px-5 border ${size === complexity && 'nextgpt__bg_teal'}`}
                                             >{size}</button>
                                         ))}
                                     </span>
                                 </div>
                             </div>
                         </div>
-                        <div className="h-20"></div>
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between py-4 px-4 border-t border-gray-300">
-                <button className="nextgpt__btn_primary">Cancel</button>
-                <button className="nextgpt__btn-dark" onClick={onUseStyle}>Use style</button>
+            <div className="flex justify-between items-center py-4 px-4 border-t border-gray-300 h-20">
+                <button className="nextgpt__btn_primary nextgpt__btn_size_md">Cancel</button>
+                <button className="nextgpt__btn_dark nextgpt__btn_size_md" onClick={onUseStyle}>Use style</button>
             </div>
         </div>
     )

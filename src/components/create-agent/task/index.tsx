@@ -153,7 +153,7 @@ export default function Task() {
                         {task.type === null && <span className="nextgpt__text-color_placeholder">No type selected</span>}
                     </div>
                     <button
-                        className="nextgpt__btn_secondary"
+                        className="nextgpt__btn_secondary nextgpt__btn_size_sm"
                         onClick={() => setIsOpen(true)}
                     >{task.type ? 'Change' : 'Select type'}</button>
                 </div>

@@ -4,8 +4,11 @@
 
 
 body {
-  font-family:  'Inter';
-  @apply nextgpt__text-color_main  bg-white nextgpt__text-size_md;
+  font-family: 'Inter';
+  @apply nextgpt__text-color_main bg-white nextgpt__text-size_md;
+}
+label {
+  @apply nextgpt__font_semibold
 }
 
 .nextgpt__text-size_sm {
@@ -15,12 +18,15 @@ body {
 .nextgpt__text-size_md {
   @apply text-[14px];
 }
+
 .nextgpt__text-size_lg {
   @apply text-[16px];
 }
+
 .nextgpt__text-xl {
   @apply text-[20px];
 }
+
 .nextgpt__text-2xl {
   @apply text-[32px];
 }
@@ -33,6 +39,7 @@ body {
 .nextgpt__text-color_sub {
   @apply text-[#525866];
 }
+
 .nextgpt__text-color_secondary {
   @apply text-[#008F82];
 }
@@ -44,12 +51,15 @@ body {
 .nextgpt__font_bold {
   @apply font-[600];
 }
+
 .nextgpt__font_semibold {
   @apply font-[500];
 }
+
 .nextgpt__font_regular {
   @apply font-[300]
 }
+
 .nextgpt__text-color_icon-default {
   @apply text-[#B4B7C1];
 }
@@ -61,25 +71,34 @@ body {
 .nextgpt__bg_surface {
   @apply bg-[#F7F7F8];
 }
+
 .nextgpt__bg_neutral-50 {
   @apply bg-[#F7F7F8];
 }
+
 .nextgpt__bg_neutral-100 {
   @apply bg-[#EEEFF1];
 }
 
-.nextgpt__btn {
+.nextgpt__bg_teal {
+  @apply bg-[#D4F2F0];
+}
+
+.nextgpt__btn_size_sm {
   @apply px-2 py-1 rounded-lg nextgpt__text-size_sm
 }
 
+.nextgpt__btn_size_md {
+  @apply px-3 py-2 rounded-lg nextgpt__text-size_md
+}
+
 .nextgpt__btn_primary {
-  @apply nextgpt__btn;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.02) 100%), #F7F7F8;
   box-shadow: 0px 1px 2px -1px rgba(16, 24, 40, 0.05), 0px 2px 4px -2px rgba(16, 24, 40, 0.1), 0px 0px 0px 1px #EEEFF1, inset 0px 1px 0px rgba(255, 255, 255, 0.64);
 }
 
 .nextgpt__btn_light {
-  @apply nextgpt__btn nextgpt__text-color_secondary;
+  @apply nextgpt__text-color_secondary;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.01) 0%, rgba(0, 0, 0, 0.01) 100%), #FFFFFF;
   opacity: 0.8;
   box-shadow: 0px 1px 2px -1px rgba(16, 24, 40, 0.05), 0px 2px 4px -2px rgba(16, 24, 40, 0.1), 0px 0px 0px 1px #EEEFF1, inset 0px -1px 0px #F7F7F8;
@@ -87,51 +106,61 @@ body {
 }
 
 .nextgpt__btn_secondary {
-  @apply nextgpt__btn;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(0, 0, 0, 0.02) 100%), #FFFFFF;
   box-shadow: 0px 1px 2px -1px rgba(16, 24, 40, 0.05), 0px 2px 4px -2px rgba(16, 24, 40, 0.1), 0px 0px 0px 1px #EEEFF1, inset 0px -1px 0px #F7F7F8;
   border-radius: 6px;
 
 }
-.nextgpt__btn-rounded {
-  @apply rounded-full px-4 py-1 border bg-white border-gray-200 hover:bg-gray-200 text-gray-700 nextgpt__text-size_md
+
+.nextgpt__btn_dark {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%), #20242D;
+  box-shadow: 0px 0.25px 0px rgba(3, 7, 18, 0.16), 0px 0.5px 0px rgba(3, 7, 18, 0.16), 0px 0px 0px 1px #151821, inset 0px 1px 0px rgba(255, 255, 255, 0.16);
+  border-radius: 8px;
+  color: white;
 }
+
+.nextgpt__button-selector {
+  @apply rounded-full px-3 py-1 border bg-white border-gray-200 hover:bg-gray-200 text-gray-700 nextgpt__text-size_md
+}
+
+.nextgpt__button-selector.active {
+  @apply bg-gray-800 text-white
+}
+
+
 .screen-x-padding {
   @apply px-[6rem]
 }
 
-
-
-.nextgpt__btn-rounded.active {
-  @apply bg-gray-900 text-white;
-  line-height: 24px;
-}
 .nextgpt__input {
   @apply w-full rounded-md border border-gray-300 px-3 py-2 focus:border-gray-900 focus:outline-none
 }
-.nextgpt__btn-dark {
-  @apply rounded-lg bg-gray-900 px-4 py-2 text-sm text-white hover:bg-gray-800
-}
+
 
 .nextgpt__title {
-  @apply nextgpt__font_bold nextgpt__text-color_main nextgpt__text-xl; 
+  @apply nextgpt__font_bold nextgpt__text-color_main nextgpt__text-xl;
 }
 
-label {
-  @apply nextgpt__font_semibold
-}
+
+
 .nextgpt__subtitle {
   @apply nextgpt__text-color_sub nextgpt__text-size_md;
 }
+
+
+
 .nextgpt__form-group {
   @apply space-y-2
 }
+
 .nextgpt__form-container {
   @apply space-y-4
 }
+
 .nextgpt__agent_border {
   @apply border border-gray-300
 }
+
 .nextgpt__text-muted {
   color: #525866;
 }
@@ -139,8 +168,3 @@ label {
 .nextgpt__text-secondary {
   color: #008F82
 }
-
-
-
-
-

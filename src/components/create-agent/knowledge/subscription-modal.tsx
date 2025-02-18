@@ -223,8 +223,8 @@ const SubscriptionModal: React.FC<PropType> = ({ isOpen, close }) => {
 
                 </div>
                 <div className='flex justify-between px-6 py-4'>
-                    <button className="nextgpt__btn_primary" onClick={close}>Cancel</button>
-                    <button className="nextgpt__btn-dark" onClick={onOk}>Add topic</button>
+                    <button className="nextgpt__btn_primary nextgpt__btn_size_md" onClick={close}>Cancel</button>
+                    <button className="nextgpt__btn_dark nextgpt__btn_size_md" onClick={onOk}>Add topic</button>
                 </div>
             </Modal>
             <ScrapeModal

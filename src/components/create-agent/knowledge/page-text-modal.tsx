@@ -74,7 +74,7 @@ const PasteTextModal: React.FC<PropType> = ({ isOpen, close, onOk }) => {
             <div className="px-6 py-4 flex justify-end">
                 <button
                     onClick={onOk}
-                    className="nextgpt__btn-dark rounded-lg"
+                    className="nextgpt__btn_dark nextgpt__btn_size_md"
                 >Add document</button>
             </div>
         </Modal>

@@ -120,7 +120,7 @@ const CollectionModal: React.FC<PropType> = ({ isOpen, close, initialValues }) =
                 <div className="flex justify-end px-6 py-4">
                     <button
                         type="submit"
-                        className="nextgpt__btn-dark rounded-lg"
+                        className="nextgpt__btn_dark nextgpt__btn_size_md"
                     >Confirm</button>
                 </div>
             </form>

@@ -69,7 +69,7 @@ export function TaskModal({isOpen, close}:{isOpen: boolean, close: ()=>void}) {
                     </div>
                     <button
                         onClick={onContinueClick}
-                        className="block text-center w-full py-2 mt-3 nextgpt__btn-dark"
+                        className="nextgpt__btn_size_md nextgpt__btn_dark w-full mt-2"
                     >Continue</button>
                 </div>
                 

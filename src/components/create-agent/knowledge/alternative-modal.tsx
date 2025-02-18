@@ -104,7 +104,7 @@ const AlternativeModal: React.FC<AlternativeModalProps> = ({ isOpen, close }) =>
                 </div>
             </div>
             <div className="px-6 py-4 flex justify-end">
-                <button className="nextgpt__btn-dark" onClick={onConfirm}>Confirm</button>
+                <button className="nextgpt__btn_dark nextgpt__btn_size_md" onClick={onConfirm}>Confirm</button>
             </div>
         </Modal>
     );

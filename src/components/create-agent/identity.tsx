@@ -98,12 +98,12 @@ export default function AgentForm() {
                         <button
                             key={it}
                             onClick={() => { onClickRole(it) }}
-                            className={`nextgpt__btn-rounded ${identity.role === it && 'active'}`}
+                            className={`nextgpt__button-selector ${identity.role === it && 'active'}`}
                         >
                             {it}
                         </button>
                     ))}
-                    <button onClick={onClickOther} className={`rounded-full px-3 py-1 text-md ${showOther ? "bg-gray-900 text-white" : "bg-gray-100 hover:bg-gray-200 text-gray-700"}`}>Other</button>
+                    <button onClick={onClickOther} className={`nextgpt__button-selector ${showOther && 'active'}`}>Other</button>
                 </div>
                 {showOther && (
                     <input
