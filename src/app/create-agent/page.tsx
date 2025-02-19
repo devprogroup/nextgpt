@@ -30,68 +30,70 @@ const CreateAgent: React.FC = () => {
     }
 
     return (
-        <div className="h-screen flex flex-col">
-            <Header />
-            <div className="screen-x-padding py-16 flex-grow flex flex-col">
-                <div className="grid gap-24 md:grid-cols-2 flex-grow">
-                    <div className="space-y-10 flex flex-col">
-                        <div className="space-y-10 flex-grow">
-                            {step !== 5 && (
-                                <div>
-                                    <h1 className="nextgpt__title">{STEPS[step].title}</h1>
-                                    <p className="nextgpt__subtitle">{STEPS[step].subtitle}</p>
-                                </div>
-                            )}
-                                
-                            {step === 0 && <Identity />}
-                            {step === 1 && <Task />}
-                            {step === 2 && <Knowledge />}
-                            {step === 3 && <Skills />}
-                            {step === 4 && <Personality />}
-                            {step === 5 && <Review />}
-                        </div>
-                        <BottomNav
-                            valid={true}
-                            canSkip={step === 3}
-                        />
-                        </div>
-                    <input type="file" accept="image/*" hidden id="avatar-selector" onChange={onAvatarChange} />
-
-                    {/* Preview Card */}
-                    <div className="h-full flex justify-center items-center nextgpt__bg_surface rounded-3xl">
-                        <div className="rounded-3xl bg-white p-6  min-w-2/3 shadow-lg">
-                            <div className="flex flex-col items-center gap-4">
-                                {agent.identity.avatarUrl ? (
-                                    <Image
-                                        width={112}
-                                        height={112}
-                                        src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-28 h-28" />
-                                ) : (
-                                    <div className="flex h-28 w-28 items-center justify-center rounded-full nextgpt__bg_neutral-100 text-3xl font-medium">
-                                    {agent.identity.firstName[0]}
-                                    {agent.identity.lastName[0]}
-                                </div>
+        
+            <div className="h-screen w-screen flex flex-col">
+                <Header />
+                <div className="w-screen flex justify-center flex-grow py-12">
+                    <div className="grid gap-24 md:grid-cols-2 w-[88%]">
+                        <div className="space-y-10 flex flex-col">
+                            <div className="space-y-10 flex-grow">
+                                {step !== 5 && (
+                                    <div>
+                                        <h1 className="nextgpt__title">{STEPS[step].title}</h1>
+                                        <p className="nextgpt__subtitle">{STEPS[step].subtitle}</p>
+                                    </div>
                                 )}
-                                
-                                
-                                <div className="text-center">
-                                    <h3 className="text-4xl font-medium">
-                                        {agent.identity.firstName ? (<span>{agent.identity.firstName}</span>) : <span className="nextgpt__text-color_placeholder">John</span>}
-                                        &nbsp;
-                                        {agent.identity.lastName ? (<span>{agent.identity.lastName}</span>) : <span className="nextgpt__text-color_placeholder">Doe</span>}
-                                    </h3>
-                                    <p className="text-2xl">
-                                        {agent.identity.role ? (<span>{agent.identity.role}</span>) : <span className="nextgpt__text-color_placeholder">Job Title</span>}
-                                        <span className={`mx-2 ${agent.identity.organization && agent.identity.role ? '' : 'nextgpt__text-color_placeholder'}`}>@</span>
-                                        {agent.identity.organization ? (<span>{agent.identity.organization}</span>) : <span className="nextgpt__text-color_placeholder">Company</span>}
-                                    </p>
+                                    
+                                {step === 0 && <Identity />}
+                                {step === 1 && <Task />}
+                                {step === 2 && <Knowledge />}
+                                {step === 3 && <Skills />}
+                                {step === 4 && <Personality />}
+                                {step === 5 && <Review />}
+                            </div>
+                            <BottomNav
+                                valid={true}
+                                canSkip={step === 3}
+                            />
+                            </div>
+                        <input type="file" accept="image/*" hidden id="avatar-selector" onChange={onAvatarChange} />
+
+                        {/* Preview Card */}
+                        <div className="h-full flex justify-center items-center nextgpt__bg_surface rounded-3xl">
+                            <div className="rounded-3xl bg-white p-6  min-w-2/3 shadow-lg">
+                                <div className="flex flex-col items-center gap-4">
+                                    {agent.identity.avatarUrl ? (
+                                        <Image
+                                            width={112}
+                                            height={112}
+                                            src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-28 h-28" />
+                                    ) : (
+                                        <div className="flex h-28 w-28 items-center justify-center rounded-full nextgpt__bg_neutral-100 text-3xl font-medium">
+                                        {agent.identity.firstName[0]}
+                                        {agent.identity.lastName[0]}
+                                    </div>
+                                    )}
+                                    
+                                    
+                                    <div className="text-center">
+                                        <h3 className="text-4xl font-medium">
+                                            {agent.identity.firstName ? (<span>{agent.identity.firstName}</span>) : <span className="nextgpt__text-color_placeholder">John</span>}
+                                            &nbsp;
+                                            {agent.identity.lastName ? (<span>{agent.identity.lastName}</span>) : <span className="nextgpt__text-color_placeholder">Doe</span>}
+                                        </h3>
+                                        <p className="text-2xl">
+                                            {agent.identity.role ? (<span>{agent.identity.role}</span>) : <span className="nextgpt__text-color_placeholder">Job Title</span>}
+                                            <span className={`mx-2 ${agent.identity.organization && agent.identity.role ? '' : 'nextgpt__text-color_placeholder'}`}>@</span>
+                                            {agent.identity.organization ? (<span>{agent.identity.organization}</span>) : <span className="nextgpt__text-color_placeholder">Company</span>}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        
     )
 }
 
