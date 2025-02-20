@@ -87,6 +87,22 @@ const CreateAgent: React.FC = () => {
                                             {agent.identity.organization ? (<span>{agent.identity.organization}</span>) : <span className="nextgpt__text-color_placeholder">Company</span>}
                                         </p>
                                     </div>
+                                    {agent.task.purpose && (
+                                        <>
+                                            <hr className="dotted-hr w-full"></hr>
+                                            <div className="w-full space-y-4 nextgpt__text-size_lg">
+                                                <div className="">
+                                                    <p className="nextgpt__text-color_sub">Main objective</p>
+                                                    <p className="">{agent.task.purpose}</p>
+                                                </div>
+                                                <div className="">
+                                                    <p className="nextgpt__text-color_sub">Agent type</p>
+                                                    <p className="">{agent.task.type}</p>
+                                                </div>
+                                                
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>

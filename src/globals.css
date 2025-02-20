@@ -168,3 +168,16 @@ label {
 .nextgpt__text-secondary {
   color: #008F82
 }
+
+.dotted-hr {
+  border: none;
+  height: 2px; /* Controls thickness */
+  background: repeating-linear-gradient(
+    to right,
+    #E2E4E9 5px,
+    #E2E4E9 5px,  /* Dot size */
+    transparent 10px /* Space between dots */
+
+  );
+  border-radius: 50%;
+}
