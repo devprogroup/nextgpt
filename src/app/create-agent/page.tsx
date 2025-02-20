@@ -90,7 +90,7 @@ const CreateAgent: React.FC = () => {
                                     {agent.task.purpose && (
                                         <>
                                             <hr className="dotted-hr w-full"></hr>
-                                            <div className="w-full space-y-4 nextgpt__text-size_lg">
+                                            <div className="w-full space-y-2 nextgpt__text-size_lg">
                                                 <div className="">
                                                     <p className="nextgpt__text-color_sub">Main objective</p>
                                                     <p className="">{agent.task.purpose}</p>
