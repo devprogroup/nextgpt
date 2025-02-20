@@ -39,7 +39,7 @@ const PasteTextModal: React.FC<PropType> = ({ isOpen, close, onOk }) => {
                 </div>
                 
                 <div className="rounded-lg overflow-hidden border border-gray-200">
-                    <Disclosure as="div" className="space-y-2 bg-gray-100">
+                    <Disclosure as="div" className="space-y-2 nextgpt__bg_neutral-100">
                         {({ open }) => (
                             <>
                                 <DisclosureButton className="w-full">
