@@ -171,13 +171,8 @@ label {
 
 .dotted-hr {
   border: none;
-  height: 2px; /* Controls thickness */
-  background: repeating-linear-gradient(
-    to right,
-    #E2E4E9 5px,
-    #E2E4E9 5px,  /* Dot size */
-    transparent 10px /* Space between dots */
-
-  );
-  border-radius: 50%;
+  height: 4px; /* Match the total height to dot size + spacing */
+  background: radial-gradient(circle, #E2E4E9 1px, transparent 2px);
+  background-size: 8px 4px; /* (dot size + spacing) x (full height) */
+  background-repeat: repeat-x;
 }
