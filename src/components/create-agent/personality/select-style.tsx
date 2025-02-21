@@ -3,6 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StoreType } from "@/types";
 import { FaArrowRight } from "react-icons/fa";
 import { Range } from 'react-range'
+import { MdDelete, MdMoreHoriz, MdOutlineDriveFileRenameOutline, MdOutlineMore } from "react-icons/md";
+import { IoIosMore } from "react-icons/io";
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { EditIcon, TrashIcon } from "../svg";
 const CUSTOM_STYLE: { key: string, start: string, end: string }[] = [
     {
         key: 'formality',
@@ -79,10 +83,30 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                     <div className="space-y-6">
                         <div className="flex justify-between items-center p-2">
                             <div className="flex items-center gap-2 nextgpt__text-muted">
-                                <span className="font-semibold">Parameters</span>
-                                <span>Explaination</span>
+                                <span className="font-semibold nextgpt__text-color_secondary">Parameters</span>
+                                <span className="nextgpt__text-color_placeholder">Explaination</span>
                             </div>
-                            <span className="nextgpt__text-muted">Explaination</span>
+                            <Menu>
+                                <MenuButton className="nextgpt__text-color_placeholder"><IoIosMore size={28} /></MenuButton>
+                                <MenuItems  anchor="bottom end" className="nextgpt__dropdown p-2 w-[200px]">
+                                    <MenuItem>
+                                        <div className="flex items-center py-[6px] px-2 rounded-lg hover:bg-gray-100 gap-2 cursor-pointer">
+                                            <span className="w-4">
+                                                <EditIcon width={18} height={18} />
+                                            </span>
+                                            <span className="nextgpt__text-size_md">Rename</span>
+                                        </div>
+                                    </MenuItem>
+                                    <MenuItem>
+                                        <div className="flex items-center py-[6px] px-2 rounded-lg hover:bg-gray-100 gap-2 cursor-pointer">
+                                            <span className="w-4">
+                                                <TrashIcon />
+                                            </span>
+                                            <span className="nextgpt__text-size_md">Delete style</span>
+                                        </div>
+                                    </MenuItem>
+                                </MenuItems>
+                            </Menu>
                         </div>
                         <div className="nextgpt__bg_surface p-4 rounded-lg">
                             <table>
@@ -154,7 +178,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                         {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
-                                                className={`rounded-full py-1 px-5 border ${size === abstractness && 'nextgpt__bg_teal'}`}
+                                                className={`nextgpt__button-selector ${size === abstractness && 'active'}`}
                                                 onClick={() => setAbstractness(size)}
                                             >
                                                 {size}
@@ -171,7 +195,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                             <button
                                                 key={size}
                                                 onClick={() => setSpecificity(size)}
-                                                className={`rounded-full py-1 px-5 border ${size === specificity && 'nextgpt__bg_teal'}`}
+                                                className={`nextgpt__button-selector ${size === specificity && 'active'}`}
                                             >General</button>
                                         ))}
 
@@ -187,7 +211,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                         {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
-                                                className={`rounded-full py-1 px-5 border ${size === outputLength && 'nextgpt__bg_teal'}`}
+                                                className={`nextgpt__button-selector ${size === outputLength && 'active'}`}
                                                 onClick={() => setOutputLength(size)}
                                             >
                                                 {size}
@@ -202,7 +226,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                             <button
                                                 key={size}
                                                 onClick={() => setComplexity(size)}
-                                                className={`rounded-full py-1 px-5 border ${size === complexity && 'nextgpt__bg_teal'}`}
+                                                className={`nextgpt__button-selector ${size === complexity && 'active'}`}
                                             >{size}</button>
                                         ))}
                                     </span>

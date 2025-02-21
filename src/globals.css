@@ -53,7 +53,6 @@ label {
 .nextgpt__font_bold {
   @apply font-[600];
 }
-
 .nextgpt__font_semibold {
   @apply font-[500];
 }
@@ -64,6 +63,10 @@ label {
 
 .nextgpt__text-color_icon-default {
   @apply text-[#B4B7C1];
+}
+
+.nextgpt__text-color_icon-soft {
+  @apply text-[#868B98];
 }
 
 .nextgpt__bg_gray-light {
@@ -128,14 +131,21 @@ label {
   color: white;
 }
 
+
+
 .nextgpt__border_stroke-light {
   @apply border-[#EEEFF1];
 }
 
 .nextgpt__button-selector {
-  @apply rounded-full px-3 py-1 border bg-white border-gray-200 hover:bg-gray-200 text-gray-700 nextgpt__text-size_md
+  @apply rounded-full px-4 py-1 border bg-white border-gray-200 hover:bg-gray-200 text-gray-700 nextgpt__text-size_md
 }
-
+.nextgpt__dropdown {
+  background: #FFFFFF;
+  border: 1px solid #EEEFF1;
+  box-shadow: 0px 1px 2px -1px rgba(82, 88, 102, 0.02), 0px 2px 4px -2px rgba(82, 88, 102, 0.04), 0px 4px 8px -4px rgba(82, 88, 102, 0.08), 0px 8px 16px -8px rgba(82, 88, 102, 0.16), 0px 16px 32px -16px rgba(82, 88, 102, 0.32);
+  border-radius: 8px;
+}
 .nextgpt__button-selector.active {
   @apply bg-gray-800 text-white
 }

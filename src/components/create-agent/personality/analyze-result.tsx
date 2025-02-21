@@ -126,7 +126,7 @@ export default function AnalyzeResult({ close, create }: PropType) {
                                         {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
-                                                className={`rounded-full py-1 px-5 border ${size === abstractness && 'nextgpt__bg_teal'}`}
+                                                className={`nextgpt__button-selector ${size === abstractness && 'active'}`}
                                                 onClick={() => setAbstractness(size)}
                                             >
                                                 {size}
@@ -143,7 +143,7 @@ export default function AnalyzeResult({ close, create }: PropType) {
                                             <button
                                                 key={size}
                                                 onClick={() => setSpecificity(size)}
-                                                className={`rounded-full py-1 px-5 border ${size === specificity && 'nextgpt__bg_teal'}`}
+                                                className={`nextgpt__button-selector ${size === specificity && 'active'}`}
                                             >General</button>
                                         ))}
 
@@ -159,7 +159,7 @@ export default function AnalyzeResult({ close, create }: PropType) {
                                         {['S', 'M', 'L'].map((size) => (
                                             <button
                                                 key={size}
-                                                className={`rounded-full py-1 px-5 border ${size === outputLength && 'nextgpt__bg_teal'}`}
+                                                className={`nextgpt__button-selector ${size === outputLength && 'active'}`}
                                                 onClick={() => setOutputLength(size)}
                                             >
                                                 {size}
@@ -174,7 +174,7 @@ export default function AnalyzeResult({ close, create }: PropType) {
                                             <button
                                                 key={size}
                                                 onClick={() => setComplexity(size)}
-                                                className={`rounded-full py-1 px-5 border ${size === complexity && 'nextgpt__bg_teal'}`}
+                                                className={`nextgpt__button-selector ${size === complexity && 'active'}`}
                                             >{size}</button>
                                         ))}
                                     </span>
