@@ -33,8 +33,8 @@ const CreateAgent: React.FC = () => {
         
             <div className="h-screen w-screen flex flex-col">
                 <Header />
-                <div className="w-screen flex justify-center flex-grow py-12">
-                    <div className="grid gap-24 md:grid-cols-2 w-[89%]">
+                <div className="nextgpt__container flex-grow py-12">
+                    <div className="grid gap-16 md:grid-cols-2">
                         <div className="space-y-10 flex flex-col">
                             <div className="space-y-10 flex-grow">
                                 {step !== 5 && (

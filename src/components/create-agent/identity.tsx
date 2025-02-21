@@ -80,7 +80,7 @@ export default function AgentForm() {
                         onChange={(e) => setIdentityValue('lastName', e.target.value)}
                     />
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center justify-end">
                     <span className="mr-4 nextgpt__text-color_sub">Max 3MB</span>
                     <button
                         onClick={onUploadClick}
