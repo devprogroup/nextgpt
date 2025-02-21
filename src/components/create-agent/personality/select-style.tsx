@@ -47,7 +47,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
     return (
         <div className="flex flex-col h-full">
             <div className="flex flex-grow">
-                <div className="w-[280px] bg-gray-200 border-r border-gray-300 p-4 relative">
+                <div className="w-[280px] nextgpt__bg_surface-light border-r nextgpt__border_stroke-light p-4 relative">
                     <h2 className="text-gray-500 text-sm p-2">Styles</h2>
                     <ul>
                         {communicationStyles.preset.map((style) => (
@@ -57,7 +57,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                 onClick={() => setSelectedStyle(style.key)}
                             >
                                 <span>{style.name}</span>
-                                <span className="italic w-5 h-5 text-sm flex justify-center items-center bg-gray-300 rounded">P</span>
+                                <span className="italic w-5 h-5 text-sm flex justify-center items-center nextgpt__bg_surface rounded">P</span>
                             </li>
                         ))}
                         {communicationStyles.custom.map((style) => (
@@ -89,18 +89,18 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                             <thead>
                                 <tr>
                                     <td className="w-[120]"></td>
-                                    <td className="w-[100px] text-sm text-gray-600">VERY</td>
-                                    <td className="w-[100px] text-sm text-gray-600">SLIGHTLY</td>
-                                    <td className="w-[100px] text-sm text-gray-600">BALANCED</td>
-                                    <td className="w-[100px] text-sm text-gray-600">SLIGHTLY</td>
-                                    <td className="w-[100px] text-sm text-gray-600">VERY</td>
+                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">VERY</td>
+                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">SLIGHTLY</td>
+                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">BALANCED</td>
+                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">SLIGHTLY</td>
+                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">VERY</td>
                                     <td className='w-120'></td>
                                 </tr>
                             </thead>
                             <tbody>
                                 {CUSTOM_STYLE.map((style) => (
                                     <tr key={style.key}>
-                                        <td className="py-2">{style.start}</td>
+                                        <td className="py-2 nextgpt__text-size_md">{style.start}</td>
                                         <td colSpan={5}>
                                             <div className="relative">
                                                 <div className="bg-gray-200 h-1 absolute w-full rounded-full">
@@ -147,7 +147,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                         
                         <div className="space-y-6">
                             <div className="space-y-2">
-                                <label className="nextgpt__text-muted text-sm">Level of abstraction</label>
+                                <label className="nextgpt__text-muted nextgpt__text-size_sm">Level of abstraction</label>
                                 <div className="flex justify-between items-center">
                                     <span>Abstractness</span>
                                     <span className="flex gap-2">
@@ -156,7 +156,9 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                                 key={size}
                                                 className={`rounded-full py-1 px-5 border ${size === abstractness && 'nextgpt__bg_teal'}`}
                                                 onClick={() => setAbstractness(size)}
-                                            >{size}</button>
+                                            >
+                                                {size}
+                                            </button>
                                         ))}
 
 
@@ -178,7 +180,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                 </div>
                             </div>
                             <div className="space-y-2">
-                                <label className="nextgpt__text-muted text-sm">Length & complexity</label>
+                                <label className="nextgpt__text-muted nextgpt__text-size_sm">Length & complexity</label>
                                 <div className="flex justify-between items-center">
                                     <span>Output length</span>
                                     <span className="flex gap-2">
@@ -187,7 +189,9 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                                 key={size}
                                                 className={`rounded-full py-1 px-5 border ${size === outputLength && 'nextgpt__bg_teal'}`}
                                                 onClick={() => setOutputLength(size)}
-                                            >{size}</button>
+                                            >
+                                                {size}
+                                            </button>
                                         ))}
                                     </span>
                                 </div>
@@ -208,7 +212,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                     </div>
                 </div>
             </div>
-            <div className="flex justify-between items-center py-4 px-4 border-t border-gray-300 h-20">
+            <div className="flex justify-between items-center py-4 px-4 border-t nextgpt__border_stroke-light h-20">
                 <button className="nextgpt__btn_primary nextgpt__btn_size_md">Cancel</button>
                 <button className="nextgpt__btn_dark nextgpt__btn_size_md" onClick={onUseStyle}>Use style</button>
             </div>

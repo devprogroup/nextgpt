@@ -73,6 +73,9 @@ label {
 .nextgpt__bg_surface {
   @apply bg-[#F7F7F8];
 }
+.nextgpt__bg_surface-light {
+  @apply bg-[#FCFCFC];
+}
 
 .nextgpt__bg_neutral-50 {
   @apply bg-[#F7F7F8];
@@ -123,6 +126,10 @@ label {
   box-shadow: 0px 0.25px 0px rgba(3, 7, 18, 0.16), 0px 0.5px 0px rgba(3, 7, 18, 0.16), 0px 0px 0px 1px #151821, inset 0px 1px 0px rgba(255, 255, 255, 0.16);
   border-radius: 8px;
   color: white;
+}
+
+.nextgpt__border_stroke-light {
+  @apply border-[#EEEFF1];
 }
 
 .nextgpt__button-selector {
