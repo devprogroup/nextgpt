@@ -146,7 +146,7 @@ export default function Task() {
                 <label htmlFor="purpose" className="block">
                     What type of agent do you want {name} to be?
                 </label>
-                <div className="nextgpt__input flex justify-between items-center">
+                <div className="p-2 border border-dashed flex justify-between items-center rounded-lg">
                     <div className="flex items-center">
                         {task.type && TASKS.find(it => it.type === task.type)?.icon}
                         <span className="ml-2">{task.type && TASKS.find(it => it.type === task.type)?.label}</span>

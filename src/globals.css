@@ -97,7 +97,7 @@ label {
   @apply bg-[#00B8A7];
 }
 .nextgpt__btn_size_sm {
-  @apply px-2 py-1 rounded-lg nextgpt__text-size_sm
+  @apply px-2 h-[24px] rounded-lg nextgpt__text-size_sm
 }
 
 .nextgpt__btn_size_md {
