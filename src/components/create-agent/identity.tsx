@@ -154,13 +154,14 @@ export default function AgentForm() {
                         className="relative block w-full rounded-lg border bg-white text-left text-sm/6 focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
                     >
                         <div className="h-10 flex items-center justify-between px-4">
-                            {LLM_OPTIONS.find(it => it.key === identity.llm) && (
-                                <div className="flex items-center gap-2">
-                                    <img src={LLM_OPTIONS.find(it => it.key === identity.llm)?.icon} alt="icon" className="w-6 h-6 rounded-full" />  
-                                    <span>{LLM_OPTIONS.find(it => it.key === identity.llm)?.label || 'Select LLM'} {LLM_OPTIONS.find(it=>it.key === identity.llm)?.isDefault && '(default)'}</span>
-                                </div>
-                            )}
-                            
+                            <span>
+                                {LLM_OPTIONS.find(it => it.key === identity.llm) && (
+                                    <div className="flex items-center gap-2">
+                                        <img src={LLM_OPTIONS.find(it => it.key === identity.llm)?.icon} alt="icon" className="w-6 h-6 rounded-full" />  
+                                        <span>{LLM_OPTIONS.find(it => it.key === identity.llm)?.label || 'Select LLM'} {LLM_OPTIONS.find(it=>it.key === identity.llm)?.isDefault && '(default)'}</span>
+                                    </div>
+                                )}
+                            </span>
                             
                             <BsChevronDown
                                 className="group pointer-events-none size-4 fill-gray-400"
