@@ -10,7 +10,9 @@ body {
 label {
   @apply nextgpt__font_semibold
 }
-
+.nextgpt__container {
+  @apply w-screen px-[80px];
+}
 .nextgpt__text-size_sm {
   @apply text-[12px];
 }

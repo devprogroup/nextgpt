@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { MdEdit } from 'react-icons/md'
 import { CommunicationStyleType } from '@/types'
 import CommunicationStyleModal from './comminication-style-modal'
+import { BsChevronDown } from 'react-icons/bs'
 const PRESETS: CommunicationStyleType[] = [
     { key: 'professional', name: 'Professional' },
     { key: 'friendly', name: 'Friendly' },
@@ -23,7 +24,7 @@ export default function CommunicationStyle() {
                 >
                     <div className="h-10 flex items-center justify-between px-4">
                         <span>{selected?.name}</span>
-                        <FaChevronDown
+                        <BsChevronDown
                             className="group pointer-events-none  size-4 fill-gray-400"
                             aria-hidden="true"
                         />
