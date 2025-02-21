@@ -24,7 +24,7 @@ const BottomNav: React.FC<PropType> = ({ valid, canSkip = false }: PropType) => 
         dispatch(setStep(step - 1));
     }
     return (
-        <div className="flex items-center justify-between pt-6">
+        <div className="flex items-center justify-between">
             {step > 0 ? (
                 <button
                     className="text-gray-600 hover:text-gray-900"
