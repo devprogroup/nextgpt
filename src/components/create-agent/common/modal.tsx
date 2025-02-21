@@ -38,7 +38,7 @@ export default function Modal({
                             </div>
                             {showCloseButton && (
                                 <button
-                                    className="bg-gray-100 text-gray-500 w-8 h-8 flex justify-center items-center rounded-full"
+                                    className="nextgpt__bg_surface text-[#868B98] w-[32px] h-[32px] flex justify-center items-center rounded-full"
                                     onClick={close}
                                 ><MdClose /></button>
                             )}
