@@ -51,7 +51,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
     return (
         <div className="flex flex-col h-full">
             <div className="flex flex-grow">
-                <div className="w-[280px] nextgpt__bg_surface-light border-r nextgpt__border_stroke-light p-4 relative">
+                <div className="w-[280px] nextgpt__bg_surface-light border-r nextgpt__border_stroke-light p-4 relative shadow-[inset_-2px_0px_4px_rgba(0,0,0,0.02)]">
                     <h2 className="text-gray-500 text-sm p-2">Styles</h2>
                     <ul>
                         {communicationStyles.preset.map((style) => (
@@ -70,7 +70,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                             </li>
                         ))}
                     </ul>
-                    <div className="bg-white rounded-lg p-4 absolute bottom-4 right-4 left-4">
+                    <div className="shadow-[0px_1px_2px_-1px_rgba(16,24,40,0.05),0px_2px_4px_-2px_rgba(16,24,40,0.1),0px_0px_0px_1px_#EEEFF1] rounded-[8px] bg-white p-4 absolute bottom-4 right-4 left-4">
                         <h2 className="font-semibold mb-1">Have your own voices?</h2>
                         <p className="nextgpt__text-muted mb-2">Share text we can analyse to craft a custom tone.</p>
                         <a className="nextgpt__text-muted font-semibold flex items-center gap-2 cursor-pointer">
