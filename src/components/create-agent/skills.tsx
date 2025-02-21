@@ -45,19 +45,22 @@ export default function Skills() {
                 return skill.name.toLowerCase().includes(query.toLowerCase())
             })
     const onCreateSkill = (e:SkillType) => {
-        dispatch(setSkills([...skills, e]))
+        if(e) {
+            dispatch(setSkills([...skills, e]))
+        }
     }
+    console.log(skills)
     return (
         <div>
             <div className="space-y-4">
             
                 <Combobox value={selected} onChange={onCreateSkill} onClose={() => setQuery('')}>
-                    <div className="relative border rounded-lg">
-                        <ComboboxButton className="group absolute inset-y-0 left-0 px-2.5">
+                    <div className="relative nextgpt__input flex ">
+                        <ComboboxButton className="group inset-y-0 left-0">
                             <MdSearch size={24} className="text-gray-500 group-hover:text-gray-400" />
                         </ComboboxButton>
                         <ComboboxInput
-                            className="w-full pl-9 rounded-lg border-none bg-white/5 py-1.5 pr-8 pl-3 text-sm/6  focus:outline-none data-[focus]:outline-2 data-[focus]:-outline-offset-2 data-[focus]:outline-white/25"
+                            className="w-full outline-none"
                             displayValue={(person:SkillType) => person?.name}
                             onChange={(event) => setQuery(event.target.value)}
                             placeholder="Search over 100+ tasks agents can perform"

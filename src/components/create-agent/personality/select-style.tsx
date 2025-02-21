@@ -79,8 +79,8 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                         </a>
                     </div>
                 </div>
-                <div className="p-4">
-                    <div className="space-y-6">
+                <div className="h-full flex flex-col">
+                    <div className="space-y-6 p-4 flex-grow">
                         <div className="flex justify-between items-center p-2">
                             <div className="flex items-center gap-2 nextgpt__text-muted">
                                 <span className="font-semibold nextgpt__text-color_secondary">Parameters</span>
@@ -234,12 +234,13 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                             </div>
                         </div>
                     </div>
+                    <div className="flex justify-between items-center py-4 px-4 border-t nextgpt__border_stroke-light h-18">
+                        <button className="nextgpt__btn_primary nextgpt__btn_size_md">Cancel</button>
+                        <button className="nextgpt__btn_dark nextgpt__btn_size_md" onClick={onUseStyle}>Use style</button>
+                    </div>
                 </div>
             </div>
-            <div className="flex justify-between items-center py-4 px-4 border-t nextgpt__border_stroke-light h-20">
-                <button className="nextgpt__btn_primary nextgpt__btn_size_md">Cancel</button>
-                <button className="nextgpt__btn_dark nextgpt__btn_size_md" onClick={onUseStyle}>Use style</button>
-            </div>
+            
         </div>
     )
 }
