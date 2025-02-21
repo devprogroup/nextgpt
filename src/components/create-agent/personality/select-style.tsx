@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { StoreType } from "@/types";
 import { FaArrowRight } from "react-icons/fa";
 import { Range } from 'react-range'
-const CUSTOM_STYLE :{key: string, start: string, end: string}[]= [
+const CUSTOM_STYLE: { key: string, start: string, end: string }[] = [
     {
         key: 'formality',
         start: 'Formality',
@@ -43,7 +43,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
         respect: [0],
         nonsense: [0]
     })
-    
+
     return (
         <div className="flex flex-col h-full">
             <div className="flex flex-grow">
@@ -85,66 +85,66 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                             <span className="nextgpt__text-muted">Explaination</span>
                         </div>
                         <div className="nextgpt__bg_surface p-4 rounded-lg">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <td className="w-[120]"></td>
-                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">VERY</td>
-                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">SLIGHTLY</td>
-                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">BALANCED</td>
-                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">SLIGHTLY</td>
-                                    <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">VERY</td>
-                                    <td className='w-120'></td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {CUSTOM_STYLE.map((style) => (
-                                    <tr key={style.key}>
-                                        <td className="py-2 nextgpt__text-size_md">{style.start}</td>
-                                        <td colSpan={5}>
-                                            <div className="relative">
-                                                <div className="bg-gray-200 h-1 absolute w-full rounded-full">
-                                                    <div
-                                                        className="absolute h-full bg-gray-800 rounded-full"
-                                                        style={{
-                                                            left: styleValues[style.key][0] >= 0 ? '50%' : `${(50 + styleValues[style.key][0])}%`, width: `${Math.abs(styleValues[style.key][0])}%`
-                                                        }}>
-
-                                                    </div>
-                                                </div>
-                                                <Range
-                                                    label="Select your value"
-                                                    step={0.1}
-                                                    min={-50}
-                                                    max={50}
-                                                    values={styleValues[style.key]}
-                                                    onChange={(values) => setStyleValues(prev => ({ ...prev, [style.key]: values }))}
-                                                    renderTrack={({ props, children }) => (
-                                                        <div
-                                                            className="h-2"
-                                                            {...props}
-                                                        >
-                                                            {children}
-                                                        </div>
-                                                    )}
-                                                    renderThumb={({ props }) => (
-                                                        <div
-                                                            {...props}
-                                                            key={props.key}
-                                                            className="h-6 w-6 bg-white border border-gray-200 shadow-md rounded-full"
-                                                        />
-                                                    )}
-                                                />
-                                            </div>
-
-                                        </td>
-                                        <td className="py-2 text-end">{style.end}</td>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <td className="w-[120]"></td>
+                                        <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">VERY</td>
+                                        <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">SLIGHTLY</td>
+                                        <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">BALANCED</td>
+                                        <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">SLIGHTLY</td>
+                                        <td className="w-[100px] nextgpt__text-size_sm nextgpt__text-color_placeholder text-center">VERY</td>
+                                        <td className='w-120'></td>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {CUSTOM_STYLE.map((style) => (
+                                        <tr key={style.key}>
+                                            <td className="py-2 nextgpt__text-size_md">{style.start}</td>
+                                            <td colSpan={5}>
+                                                <div className="relative">
+                                                    <div className="bg-gray-200 h-1 absolute w-full rounded-full">
+                                                        <div
+                                                            className="absolute h-full bg-gray-800 rounded-full"
+                                                            style={{
+                                                                left: styleValues[style.key][0] >= 0 ? '50%' : `${(50 + styleValues[style.key][0])}%`, width: `${Math.abs(styleValues[style.key][0])}%`
+                                                            }}>
+
+                                                        </div>
+                                                    </div>
+                                                    <Range
+                                                        label="Select your value"
+                                                        step={0.1}
+                                                        min={-50}
+                                                        max={50}
+                                                        values={styleValues[style.key]}
+                                                        onChange={(values) => setStyleValues(prev => ({ ...prev, [style.key]: values }))}
+                                                        renderTrack={({ props, children }) => (
+                                                            <div
+                                                                className="h-2"
+                                                                {...props}
+                                                            >
+                                                                {children}
+                                                            </div>
+                                                        )}
+                                                        renderThumb={({ props }) => (
+                                                            <div
+                                                                {...props}
+                                                                key={props.key}
+                                                                className="h-6 w-6 bg-white border border-gray-200 shadow-md rounded-full"
+                                                            />
+                                                        )}
+                                                    />
+                                                </div>
+
+                                            </td>
+                                            <td className="py-2 text-end">{style.end}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
                         </div>
-                        
+
                         <div className="space-y-6">
                             <div className="space-y-2">
                                 <label className="nextgpt__text-muted nextgpt__text-size_sm">Level of abstraction</label>

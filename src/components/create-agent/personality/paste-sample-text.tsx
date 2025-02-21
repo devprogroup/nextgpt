@@ -2,13 +2,13 @@ import React from 'react';
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import { MdClose, MdDelete } from 'react-icons/md';
 
-interface PropType{
+interface PropType {
     close: () => void;
     onAnalyze: () => void;
 }
 export default function PasteSampleText({ close, onAnalyze }: PropType) {
     const [sampleTexts, setSampleTexts] = React.useState<string[]>([]);
-    const onAddSampleText = (e:any) => {
+    const onAddSampleText = (e: any) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const sampleText = formData.get('sampleText')?.toString() || '';
@@ -29,10 +29,10 @@ export default function PasteSampleText({ close, onAnalyze }: PropType) {
             </div>
             <div className="grid grid-cols-2 flex-grow gap-4">
                 <form className="flex flex-col gap-4" onSubmit={onAddSampleText}>
-                    <textarea name="sampleText" className="w-full h-96 border rounded-lg p-4 flex-grow" placeholder="Paste sample text here"></textarea>
-                    <button type="submit" className="w-full block bg-white border py-2 rounded-lg">Add</button>
+                    <textarea name="sampleText" className="w-full bg-white shadow-[0px_1px_2px_-1px_rgba(16,24,40,0.05),0px_2px_4px_-2px_rgba(16,24,40,0.1),0px_0px_0px_1px_#EEEFF1] rounded-lg p-4 flex-grow" placeholder="Paste sample text here"></textarea>
+                    <button type="submit" className="w-full block bg-white shadow-[0px_1px_2px_-1px_rgba(16,24,40,0.05),0px_2px_4px_-2px_rgba(16,24,40,0.1),0px_0px_0px_1px_#EEEFF1,inset_0px_-1px_0px_#F7F7F8] rounded-lg py-2 nextgpt__font_semibold">Add</button>
                 </form>
-                <div className="bg-gray-50 rounded-lg p-4 flex flex-col border">
+                <div className="bg-gradient-to-t from-[#FBFBFB] to-[#FFFFFF] shadow-[0px_1px_2px_-1px_rgba(16,24,40,0.05),0px_0px_0px_1px_#EEEFF1,0px_2px_4px_-2px_rgba(16,24,40,0.1),0px_4px_8px_-4px_rgba(16,24,40,0.1),inset_0px_0px_0px_1px_#FFFFFF,inset_0px_0px_3px_4px_#FBFBFB] rounded-[12px] p-4 flex flex-col border">
                     <h3 className="text-sm text-gray-500">Examples</h3>
                     <div className="flex-grow">
                         <ul className="space-y-2">
@@ -43,7 +43,7 @@ export default function PasteSampleText({ close, onAnalyze }: PropType) {
                                 </li>
                             ))}
                         </ul>
-                    
+
                     </div>
                     <div className="flex justify-end">
                         <button className="nextgpt__btn_dark nextgpt__btn_size_md" onClick={onAnalyze}>Analyze</button>
