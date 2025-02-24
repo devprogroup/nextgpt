@@ -48,7 +48,8 @@ export default function ScriptDetails ({ stepIndex }: PropsType) {
                 </label>
                 <textarea
                     id="description"
-                    className="nextgpt__input"
+                    className="nextgpt__agent_border rounded-lg w-full p-3"
+                    rows={3}
                     value={script.steps[stepIndex].context}
                     onChange={(e) => { setStepValue('context', e.target.value) }}
                 />
@@ -61,11 +62,11 @@ export default function ScriptDetails ({ stepIndex }: PropsType) {
                     <textarea
                         id="prompt"
                         rows={7}
-                        className="w-full p-4"
+                        className="w-full p-3"
                         value={script.steps[stepIndex].prompt}
                         onChange={(e) => { setStepValue('prompt', e.target.value) }}
                     />
-                    <div className="bg-gray-100 px-4 py-2">
+                    <div className="bg-gray-100 px-3 py-2">
                         <p className="nextgpt__text-muted">Type <span className="inline-block px-2 mx-1 border  rounded">/</span> to attach skills in your prompt.</p>
                     </div>
                 </div>
