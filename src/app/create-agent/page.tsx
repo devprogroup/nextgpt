@@ -63,12 +63,10 @@ const CreateAgent: React.FC = () => {
                             <div className="rounded-[24px] bg-white p-8 shadow-lg w-[448px]">
                                 <div className="flex flex-col items-center gap-4">
                                     {agent.identity.avatarUrl ? (
-                                        <Image
-                                            width={112}
-                                            height={112}
-                                            src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-28 h-28" />
+                                        <img
+                                            src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-24 h-24" />
                                     ) : (
-                                        <div className="flex h-28 w-28 items-center justify-center rounded-full nextgpt__bg_neutral-100 text-3xl font-medium">
+                                        <div className="flex h-24 w-24 items-center justify-center rounded-full nextgpt__bg_neutral-100 text-3xl font-medium">
                                         {agent.identity.firstName[0]}
                                         {agent.identity.lastName[0]}
                                     </div>
