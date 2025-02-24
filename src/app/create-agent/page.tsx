@@ -76,15 +76,15 @@ const CreateAgent: React.FC = () => {
                                     
                                     
                                     <div className="text-center">
-                                        <h3 className="text-[32px] font-semibold">
+                                        <h3 className="text-[32px] nextgpt__font_semibold">
                                             {agent.identity.firstName ? (<span>{agent.identity.firstName}</span>) : <span className="nextgpt__text-color_placeholder">John</span>}
                                             &nbsp;
                                             {agent.identity.lastName ? (<span>{agent.identity.lastName}</span>) : <span className="nextgpt__text-color_placeholder">Doe</span>}
                                         </h3>
-                                        <p className="text-[24px]">
-                                            {agent.identity.role ? (<span>{agent.identity.role}</span>) : <span className="nextgpt__text-color_placeholder">Job Title</span>}
-                                            <span className={`mx-2 ${agent.identity.organization && agent.identity.role ? '' : 'nextgpt__text-color_placeholder'}`}>@</span>
-                                            {agent.identity.organization ? (<span>{agent.identity.organization}</span>) : <span className="nextgpt__text-color_placeholder">Company</span>}
+                                        <p className="text-[24px] font-[400]">
+                                            {agent.identity.role ? (<span className="nextgpt__text-color_sub">{agent.identity.role}</span>) : <span className="nextgpt__text-color_placeholder">Job Title</span>}
+                                            <span className={`mx-2 ${agent.identity.organization && agent.identity.role ? 'nextgpt__text-color_sub' : 'nextgpt__text-color_placeholder'}`}>@</span>
+                                            {agent.identity.organization ? (<span className="nextgpt__text-color_sub">{agent.identity.organization}</span>) : <span className="nextgpt__text-color_placeholder">Company</span>}
                                         </p>
                                     </div>
                                     {agent.task.purpose && (

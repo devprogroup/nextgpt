@@ -151,11 +151,11 @@ export default function AgentForm() {
                 </div>
                 <Listbox value={identity.llm} onChange={(value) => setIdentityValue('llm', value)}>
                     <ListboxButton className="relative block w-full">
-                        <div className="nextgpt__input flex items-center justify-between h-10">
+                        <div className="nextgpt__dropdown-header flex items-center justify-between w-full px-[6px]">
                             <span>
                                 {LLM_OPTIONS.find(it => it.key === identity.llm) && (
                                     <div className="flex items-center gap-2">
-                                        <img src={LLM_OPTIONS.find(it => it.key === identity.llm)?.icon} alt="icon" className="w-6 h-6 rounded-full" />  
+                                        <img src={LLM_OPTIONS.find(it => it.key === identity.llm)?.icon} alt="icon" className="w-6 h-6 rounded-lg" />  
                                         <span>{LLM_OPTIONS.find(it => it.key === identity.llm)?.label || 'Select LLM'} {LLM_OPTIONS.find(it=>it.key === identity.llm)?.isDefault && '(default)'}</span>
                                     </div>
                                 )}
@@ -171,16 +171,16 @@ export default function AgentForm() {
                     <ListboxOptions
                         anchor="bottom"
                         transition
-                        className="mt-1 bg-white w-[var(--button-width)] rounded-xl border [--anchor-gap:var(--spacing-1)] focus:outline-none transition duration-100 ease-in data-[leave]:data-[closed]:opacity-0 border"
+                        className="nextgpt__dropdown-container w-[var(--button-width)]"
                     >
                         {LLM_OPTIONS.map((it) => (
                             <ListboxOption
                                 key={it.key}
                                 value={it.key}
-                                className="group flex cursor-default items-center gap-2 rounded-lg p-1 select-none data-[focus]:bg-white"
+                                className="group flex cursor-default items-center gap-2 rounded-lg select-none data-[focus]:bg-white nextgpt__dropdown-item"
                             >
-                                <div className="flex items-center gap-2 px-3 py-1">
-                                    <Image width={20} height={20} src={it.icon} alt="icon" className="w-6 h-6 rounded-full" />
+                                <div className="flex items-center gap-2 px-[6px]">
+                                    <Image width={20} height={20} src={it.icon} alt="icon" className="w-6 h-6 rounded-lg" />
                                     <span>{it.label} {it.isDefault && '(default)'}</span>
                                 </div>
                             </ListboxOption>

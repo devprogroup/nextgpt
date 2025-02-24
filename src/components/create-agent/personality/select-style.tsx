@@ -4,9 +4,9 @@ import { StoreType } from "@/types";
 import { FaArrowRight } from "react-icons/fa";
 import { Range } from 'react-range'
 import { MdDelete, MdMoreHoriz, MdOutlineDriveFileRenameOutline, MdOutlineMore } from "react-icons/md";
-import { IoIosMore } from "react-icons/io";
+import { IoIosArrowForward, IoIosMore } from "react-icons/io";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { EditIcon, TrashIcon } from "../svg";
+import { ArrowForwardIcon, EditIcon, TrashIcon } from "../svg";
 const CUSTOM_STYLE: { key: string, start: string, end: string }[] = [
     {
         key: 'formality',
@@ -61,7 +61,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                 onClick={() => setSelectedStyle(style.key)}
                             >
                                 <span>{style.name}</span>
-                                <span className="italic w-5 h-5 text-sm flex justify-center items-center nextgpt__bg_surface rounded">P</span>
+                                <span className="italic w-6 h-5 text-sm flex justify-center items-center nextgpt__bg_surface rounded">P</span>
                             </li>
                         ))}
                         {communicationStyles.custom.map((style) => (
@@ -72,10 +72,10 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                     </ul>
                     <div className="shadow-[0px_1px_2px_-1px_rgba(16,24,40,0.05),0px_2px_4px_-2px_rgba(16,24,40,0.1),0px_0px_0px_1px_#EEEFF1] rounded-[8px] bg-white p-4 absolute bottom-4 right-4 left-4">
                         <h2 className="font-semibold mb-1">Have your own voices?</h2>
-                        <p className="nextgpt__text-muted mb-2">Share text we can analyse to craft a custom tone.</p>
-                        <a className="nextgpt__text-muted font-semibold flex items-center gap-2 cursor-pointer">
+                        <p className="nextgpt__text-color_sub mb-2">Share text we can analyse to craft a custom tone.</p>
+                        <a className="nextgpt__text-color_secondary nextgpt__font_semibold flex items-center gap-2 cursor-pointer">
                             <span>Share examples</span>
-                            <FaArrowRight />
+                            <ArrowForwardIcon />
                         </a>
                     </div>
                 </div>
@@ -88,7 +88,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                             </div>
                             <Menu>
                                 <MenuButton className="nextgpt__text-color_placeholder"><IoIosMore size={28} /></MenuButton>
-                                <MenuItems  anchor="bottom end" className="nextgpt__dropdown p-2 w-[200px]">
+                                <MenuItems  anchor="bottom end" className="nextgpt__dropdown p-[6px] w-[200px]">
                                     <MenuItem>
                                         <div className="flex items-center py-[6px] px-2 rounded-lg hover:bg-gray-100 gap-2 cursor-pointer">
                                             <span className="w-4">
@@ -98,7 +98,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                         </div>
                                     </MenuItem>
                                     <MenuItem>
-                                        <div className="flex items-center py-[6px] px-2 rounded-lg hover:bg-gray-100 gap-2 cursor-pointer">
+                                        <div className="flex items-center py-[6px] px-[6px] rounded-lg hover:bg-gray-100 gap-2 cursor-pointer">
                                             <span className="w-4">
                                                 <TrashIcon />
                                             </span>

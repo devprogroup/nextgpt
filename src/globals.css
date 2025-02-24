@@ -68,9 +68,23 @@ label {
 .nextgpt__text-color_icon-soft {
   @apply text-[#868B98];
 }
+.nextgpt__dropdown-container {
+  background: #FFFFFF;
+  box-shadow: 0px 1px 2px -1px rgba(82, 88, 102, 0.02), 0px 2px 4px -2px rgba(82, 88, 102, 0.04), 0px 4px 8px -4px rgba(82, 88, 102, 0.08), 0px 8px 16px -8px rgba(82, 88, 102, 0.12), 0px 20px 40px -20px rgba(82, 88, 102, 0.16), 0px 0px 0px 1px #EEEFF1;
+  border-radius: 8px;
+  margin-top: 8px;
+}
 
+.nextgpt__dropdown-container .nextgpt__dropdown-item {
+  cursor: pointer;
+  height: 32px;
+}
+
+.nextgpt__dropdown-header {
+  @apply flex items-center justify-between h-8 bg-white shadow-[0px_1px_2px_-1px_rgba(16,24,40,0.05),_0px_2px_4px_-2px_rgba(16,24,40,0.1),_0px_0px_0px_1px_#EEEFF1] rounded-lg;  
+}
 .nextgpt__bg_gray-light {
-  @apply bg-gray-100
+  @apply bg-gray-100;
 }
 
 .nextgpt__bg_surface {
@@ -136,23 +150,25 @@ label {
 .nextgpt__border_stroke-light {
   @apply border-[#EEEFF1];
 }
-
-.nextgpt__button-selector {
-  @apply rounded-full px-4 h-[28px] border bg-white border-gray-200 hover:bg-gray-200 text-gray-700 nextgpt__text-size_md
-}
 .nextgpt__dropdown {
   background: #FFFFFF;
   border: 1px solid #EEEFF1;
   box-shadow: 0px 1px 2px -1px rgba(82, 88, 102, 0.02), 0px 2px 4px -2px rgba(82, 88, 102, 0.04), 0px 4px 8px -4px rgba(82, 88, 102, 0.08), 0px 8px 16px -8px rgba(82, 88, 102, 0.16), 0px 16px 32px -16px rgba(82, 88, 102, 0.32);
   border-radius: 8px;
 }
+
+.nextgpt__button-selector {
+  @apply rounded-full px-[14px] py-1 border bg-white border-gray-200 hover:bg-gray-200 text-gray-700 nextgpt__text-size_md;
+  line-height: 20px;
+}
+
 .nextgpt__button-selector.active {
-  @apply bg-gray-800 text-white
+  @apply bg-gray-800 text-white border-gray-800;
 }
 
 
 .screen-x-padding {
-  @apply px-[6rem]
+  @apply px-[6rem];
 }
 
 .nextgpt__input {
