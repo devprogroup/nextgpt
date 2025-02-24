@@ -103,7 +103,7 @@ export default function AnalyzeResult({ close, create }: PropType) {
                                                             <div
                                                                 {...props}
                                                                 key={props.key}
-                                                                className="h-6 w-6 bg-white border border-gray-200 shadow-md rounded-full"
+                                                                className="h-3 w-3 bg-white border border-gray-200 shadow-md rounded-full"
                                                             />
                                                         )}
                                                     />
