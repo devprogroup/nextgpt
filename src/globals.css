@@ -5,6 +5,8 @@
 
 body {
   font-family: 'Inter';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   @apply nextgpt__text-color_main bg-white nextgpt__text-size_md;
 }
 label {
