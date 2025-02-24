@@ -145,7 +145,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
                                                         onChange={(values) => setStyleValues(prev => ({ ...prev, [style.key]: values }))}
                                                         renderTrack={({ props, children }) => (
                                                             <div
-                                                                className="h-2"
+                                                                className="h-[3px]"
                                                                 {...props}
                                                             >
                                                                 {children}

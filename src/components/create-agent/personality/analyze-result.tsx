@@ -93,7 +93,7 @@ export default function AnalyzeResult({ close, create }: PropType) {
                                                         onChange={(values) => setStyleValues(prev => ({ ...prev, [style.key]: values }))}
                                                         renderTrack={({ props, children }) => (
                                                             <div
-                                                                className="h-2"
+                                                                className="h-[3px]"
                                                                 {...props}
                                                             >
                                                                 {children}
