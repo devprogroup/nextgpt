@@ -59,8 +59,8 @@ const CreateAgent: React.FC = () => {
                         <input type="file" accept="image/*" hidden id="avatar-selector" onChange={onAvatarChange} />
 
                         {/* Preview Card */}
-                        <div className="h-full flex justify-center items-center nextgpt__bg_surface rounded-3xl">
-                            <div className="rounded-3xl bg-white p-6  min-w-2/3 shadow-lg">
+                        <div className="h-full flex justify-center items-center nextgpt__bg_surface rounded-[24px]">
+                            <div className="rounded-[24px] bg-white p-8 shadow-lg w-[448px]">
                                 <div className="flex flex-col items-center gap-4">
                                     {agent.identity.avatarUrl ? (
                                         <Image

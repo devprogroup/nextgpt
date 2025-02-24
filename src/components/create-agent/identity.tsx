@@ -62,7 +62,7 @@ export default function AgentForm() {
                     </label>
                     <input
                         id="firstName"
-                        className="w-full rounded-md focus:outline-none nextgpt__text-2xl"
+                        className="w-full rounded-md focus:outline-none nextgpt__text-2xl placeholder-[#E2E4E9]"
                         value={identity.firstName}
                         placeholder="John"
                         onChange={(e) => setIdentityValue('firstName', e.target.value)}
@@ -74,7 +74,7 @@ export default function AgentForm() {
                     </label>
                     <input
                         id="lastName"
-                        className="w-full rounded-md focus:outline-none nextgpt__text-2xl"
+                        className="w-full rounded-md focus:outline-none nextgpt__text-2xl placeholder-[#E2E4E9]"
                         value={identity.lastName}
                         placeholder="Doe"
                         onChange={(e) => setIdentityValue('lastName', e.target.value)}
