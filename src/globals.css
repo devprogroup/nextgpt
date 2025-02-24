@@ -113,7 +113,7 @@ label {
   @apply bg-[#00B8A7];
 }
 .nextgpt__btn_size_sm {
-  @apply px-2 h-[24px] rounded-[6px] nextgpt__text-size_sm nextgpt__font_semibold;
+  @apply px-2 h-[24px] rounded-[6px] nextgpt__text-size_sm font-[500];
 }
 
 .nextgpt__btn_size_md {
