@@ -73,7 +73,7 @@ const CreateAgent: React.FC = () => {
                                     )}
                                     
                                     
-                                    <div className="text-center">
+                                    <div className="text-center tracking-[-0.01em]">
                                         <h3 className="text-[32px] nextgpt__font_semibold">
                                             {agent.identity.firstName ? (<span>{agent.identity.firstName}</span>) : <span className="nextgpt__text-color_placeholder">John</span>}
                                             &nbsp;

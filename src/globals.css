@@ -7,7 +7,7 @@ body {
   font-family: 'Inter';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply nextgpt__text-color_main bg-white nextgpt__text-size_md;
+  @apply nextgpt__text-color_main bg-white nextgpt__text-size_md tracking-[-0.005em];
 }
 label {
   @apply nextgpt__font_semibold
