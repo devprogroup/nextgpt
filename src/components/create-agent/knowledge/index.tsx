@@ -50,13 +50,13 @@ export default function Knowledge() {
     const onParameterChange = (key: string, value: boolean) => {
         let newParameters
         if (value) {
-            newParameters = [...knowledge.parameters, key]
+            newParameters = [...knowledge? knowledge.parameters : [], key]
         } else {
-            newParameters = knowledge.parameters.filter((it: string) => it !== key)
+            newParameters = knowledge?.parameters.filter((it: string) => it !== key)
         }
         dispatch(setKnowledge({ parameters: newParameters }))
     }
-    return (
+    return knowledge ? (
         <div>
             <div className="nextgpt__form-container">
                 <div className="nextgpt__form-group">
@@ -136,5 +136,5 @@ export default function Knowledge() {
             </div>
             <SubscriptionModal isOpen={showSubscriptionModal} close={() => setShowSubscriptionModal(false)} />
         </div>
-    )
+    ) : null
 }
