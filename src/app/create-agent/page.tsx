@@ -43,8 +43,8 @@ const CreateAgent: React.FC = () => {
             <div className="h-[calc(100vh-80px)] mt-[80px] overflow-y-auto">
                 <div className="h-full nextgpt__container py-12">
                     <div className="grid gap-16 md:grid-cols-2 h-full w-full">
-                        <div className="space-y-10 flex flex-col">
-                            <div className="space-y-10 flex-grow">
+                        <div className="flex flex-col">
+                            <div className="space-y-10 min-h-[calc(100vh-276px)]">
                                 {step !== 5 && (
                                     <div>
                                         <h1 className="nextgpt__title">{STEPS[step].title}</h1>
