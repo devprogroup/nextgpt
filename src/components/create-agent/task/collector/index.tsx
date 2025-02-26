@@ -8,8 +8,8 @@ import { MdAdd } from 'react-icons/md';
 import CollectionModal from './collection-modal';
 
 export default function Collector () {
-    const collections = useSelector((state:StoreType) => state.agent.task.collections);
-    const [showNewModal, setShowNewModal] = React.useState(true);
+    const collections = useSelector((state: StoreType) => state.agent.task?.collections);
+    const [showNewModal, setShowNewModal] = React.useState(false);
     return (
         <div className="nextgpt__form-group">
             <div className="flex justify-between items-center">

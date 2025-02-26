@@ -5,7 +5,7 @@ import { useSelector } from "react-redux"
 import { AgentStateType, StoreType } from "@/types"
 import EditScript from "./edit-script"
 export default function Actor() {
-    const script = useSelector((state: StoreType) => state.agent.task.script)
+    const script = useSelector((state: StoreType) => state.agent.task?.script)
     return (
         <div className="nextgpt__form-group">
            

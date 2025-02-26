@@ -8,7 +8,7 @@ interface PropsType {
 }
 
 export default function ScriptDetails ({ stepIndex }: PropsType) {
-    const script = useSelector((state: StoreType) => state.agent.task.script)
+    const script = useSelector((state: StoreType) => state.agent.task?.script)
     const dispatch = useDispatch()
     const setStepValue = (key: string, value: string) => {
         if (script && stepIndex >= 0) {

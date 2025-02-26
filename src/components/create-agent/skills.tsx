@@ -46,11 +46,11 @@ export default function Skills() {
             })
     const onCreateSkill = (e:SkillType) => {
         if(e) {
-            dispatch(setSkills([...skills, e]))
+            dispatch(setSkills([...skills ? skills: [], e]))
         }
     }
-    console.log(skills)
-    return (
+
+    return skills ? (
         <div>
             <div className="space-y-4">
             
@@ -111,6 +111,6 @@ export default function Skills() {
                 
             </div>
         </div>
-    );
+    ) : null;
 };
 

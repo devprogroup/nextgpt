@@ -91,7 +91,7 @@ function StepNode({data}:{data: StepNodeDataType}) {
 const nodeTypes = { StartNode:StartNode,  StepNode: StepNode, EndNode: EndNode };
 
 export default function StepGraph() {
-    const steps = useSelector((state: StoreType) => state.agent.task.script?.steps)
+    const steps = useSelector((state: StoreType) => state.agent.task?.script?.steps)
     const [expanded, setExpanded] = useState<boolean[]>(steps?.map(() => true) || []);
 
     const toggle = (index: number) => {

@@ -11,7 +11,7 @@ import { TASKS } from "./index"
 
 export function TaskModal({isOpen, close}:{isOpen: boolean, close: ()=>void}) {
     const task = useSelector((state:StoreType)=>state.agent.task)
-    const [type, setType] = React.useState<TaskTypeType>(task.type)
+    const [type, setType] = React.useState<TaskTypeType>(task?.type || null)
     const dispatch = useDispatch()
     
     

@@ -19,7 +19,7 @@ interface PropType {
 }
 
 export default function ScriptModal({ isOpen, close }: PropType) {
-    const script = useSelector((state: StoreType) => state.agent.task.script)
+    const script = useSelector((state: StoreType) => state.agent.task?.script)
 
     const [stepIndex, setStepIndex] = React.useState<number>(0);
 

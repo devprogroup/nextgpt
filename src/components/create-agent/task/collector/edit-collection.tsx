@@ -5,7 +5,7 @@ import { MdHorizontalRule, MdMoreHoriz, MdNotes, MdOutlineHorizontalRule, MdOutl
 import { useSelector } from 'react-redux';
 
 export default function EditCollection() {
-    const collections = useSelector((state:StoreType) => state.agent.task.collections);
+    const collections = useSelector((state: StoreType) => state.agent.task?.collections);
     return (
         <ul>
             {collections?.map((collection, index) => (

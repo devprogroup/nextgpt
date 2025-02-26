@@ -20,7 +20,7 @@ interface FormValueType {
 }
 
 const CollectionModal: React.FC<PropType> = ({ isOpen, close, initialValues }) => {
-    const collections = useSelector((state:StoreType) => state.agent.task.collections);
+    const collections = useSelector((state:StoreType) => state.agent.task?.collections);
 
     const [isRequired, setIsRequired] = useState(false)
     const dispatch = useDispatch()

@@ -7,7 +7,7 @@ import { Circuit, HeadPhone, Listing, Notebook } from "../../svg"
 import ScriptModal from "./script-modal"
 
 export default function EditScript() {
-    const script = useSelector((state: StoreType) => state.agent.task.script)
+    const script = useSelector((state: StoreType) => state.agent.task?.script)
     const [isModalOpen, setIsModalOpen] = useState<boolean>(true)
     return script ? (
         <div>

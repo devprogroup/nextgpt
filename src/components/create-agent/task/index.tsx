@@ -99,11 +99,8 @@ export const TASKS: TaskItemType[] = [
                 <div className="flex justify-start">
                     <p className="bg-white py-2 px-4 rounded-full rounded-bl-none">Typically between 5-10 business days</p>
                 </div>
-
-
             </div>
         )
-
     },
 ]
 
@@ -111,13 +108,13 @@ export default function Task() {
     const [isOpen, setIsOpen] = React.useState<boolean>(false)
     const dispatch = useDispatch()
     const task = useSelector((state: StoreType) => state.agent.task)
-    const name = useSelector((state: StoreType) => state.agent.identity.firstName)
+    const name = useSelector((state: StoreType) => state.agent.identity?.firstName)
 
     const setTaskValue = (key: string, value: any) => {
         dispatch(setTask({ [key]: value }))
     }
 
-    return (
+    return task ? (
         <div className="nextgpt__form-container">
             <div className="nextgpt__form-group">
                 <label htmlFor="purpose" className="block">
@@ -201,5 +198,5 @@ export default function Task() {
 
             <TaskModal isOpen={isOpen} close={() => setIsOpen(false)} />
         </div>
-    )
+    ) : null
 }

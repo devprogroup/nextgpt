@@ -9,7 +9,7 @@ interface PropType {
     stepIndex: number,
 }
 export default function StepDependencies({stepIndex}: PropType) {
-    const script = useSelector((state: StoreType) => state.agent.task.script)
+    const script = useSelector((state: StoreType) => state.agent.task?.script)
 
     return script && script.steps.length > 0 && stepIndex >= 0 ? (
         <div className="space-y-4">
