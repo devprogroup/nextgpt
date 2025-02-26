@@ -6,14 +6,14 @@ import AlternativeModal from './alternative-modal';
 import { MdWhatsapp, MdPhone, MdEmail } from 'react-icons/md';
 
 const OfferAlternative: React.FC = () => {
-    const alternatives = useSelector((state: StoreType) => state.agent.knowledge.alternatives);
+    const alternatives = useSelector((state: StoreType) => state.agent.knowledge?.alternatives);
     const [isModalOpen, setIsModalOpen] = React.useState(true);
 
     const onAddAlternativeClick = () => {
         setIsModalOpen(true);
         
     }
-    return alternatives.length > 0 ? (
+    return alternatives && alternatives.length > 0 ? (
         <ul>
             {alternatives.map((alternative, index) => (
                 <li key={index} className="flex rounded-lg border">
