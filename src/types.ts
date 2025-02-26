@@ -32,8 +32,9 @@ export interface CollectionType {
     validations: string[],
     exampleResponse: string,
 }
+export type KnowledgeAlternativeMethodType = 'whatsapp' | 'email' | 'phone';
 export interface KnowledgeAlternativeType {
-    method: 'whatsapp' | 'email' | 'phone',
+    method: KnowledgeAlternativeMethodType,
     name: string,
     value: string,
     description: string,

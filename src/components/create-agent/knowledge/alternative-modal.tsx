@@ -2,10 +2,15 @@ import React from 'react';
 import Modal from '../common/modal';
 import { MdEmail, MdPhone, MdWhatsapp } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { StoreType } from '@/types';
+import { KnowledgeAlternativeType, StoreType, KnowledgeAlternativeMethodType } from '@/types';
 import { setKnowledge } from '@/store/agent';
 
-const ALTERNATIVE_METHODS = [
+const ALTERNATIVE_METHODS: {
+    key: KnowledgeAlternativeMethodType;
+    label: string;
+    icon: React.ReactNode;
+    descriptionPlaceholder: string;
+}[] = [
     {
         key: 'whatsapp',
         label: 'Whatsapp',
@@ -32,18 +37,18 @@ interface AlternativeModalProps {
 }
 
 const AlternativeModal: React.FC<AlternativeModalProps> = ({ isOpen, close }) => {
-    const [selectedMethod, setSelectedMethod] = React.useState('');
+    const [selectedMethod, setSelectedMethod] = React.useState<KnowledgeAlternativeMethodType>();
     const [value, setValue] = React.useState('');
     const [description, setDescription] = React.useState('');
-    const dispatch = useDispatch()
-    const alternatives = useSelector((state: StoreType) => state.agent.knowledge.alternatives)
+    const dispatch = useDispatch();
+    const alternatives = useSelector((state: StoreType) => state.agent.knowledge?.alternatives);
     const onConfirm = () => {
-        if (selectedMethod === '') {
+        if (!selectedMethod) {
             return;
         }
         dispatch(setKnowledge({
             alternatives: [
-                ...alternatives,
+                ...(alternatives ? alternatives : []),
                 {
                     method: selectedMethod,
                     value: value,
@@ -96,7 +101,7 @@ const AlternativeModal: React.FC<AlternativeModalProps> = ({ isOpen, close }) =>
                             onChange={(e) => setDescription(e.target.value)}
                             className="nextgpt__input"
                             rows={4}
-                            placeholder={selectedMethod !== '' ? ALTERNATIVE_METHODS.find(it => it.key === selectedMethod)?.descriptionPlaceholder : ''}
+                            placeholder={selectedMethod ? ALTERNATIVE_METHODS.find(it => it.key === selectedMethod)?.descriptionPlaceholder : ''}
                         >
                         </textarea>
                     </div>
