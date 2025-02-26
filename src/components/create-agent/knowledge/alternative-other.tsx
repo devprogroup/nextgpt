@@ -5,7 +5,7 @@ import { StoreType } from '@/types';
 import { setKnowledge } from '@/store/agent';
 
 const AlternativeOther: React.FC = () => {
-    const alternativeDescription = useSelector((state: StoreType) => state.agent.knowledge.alternativeDescription);
+    const alternativeDescription = useSelector((state: StoreType) => state.agent.knowledge?.alternativeDescription);
     const dispatch = useDispatch();
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
