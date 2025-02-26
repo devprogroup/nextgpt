@@ -19,9 +19,9 @@ export default function ProgressHeader() {
                     STEPS.map((it, i) => (
                         <div
                             onClick={() => dispatch(setStep(i))}
-                            className={`p-2 cursor-pointer rounded-full flex items-center ${step === i ? 'nextgpt__bg_surface' : 'border border-[#EEEFF1]'}`} key={i}>
+                            className={`group p-2 cursor-pointer rounded-full flex items-center hover:bg-[#F7F7F8] hover:border-transparent ${step === i ? 'bg-[#F7F7F8] border-transparent' : 'border-[#EEEFF1]'} border`} key={i}>
                             <span className="h-4 text-[11px] w-4 flex justify-center items-center bg-[#868B98] text-white rounded-full"><span>{i + 1}</span></span>
-                            {step === i && <span className="block mx-1 capitalize mx-1 leading-none">{it.key}</span>}
+                            <span className={`${i === step ? 'block' : 'hidden'} group-hover:block mx-1 capitalize leading-none`}>{it.key}</span>
                         </div>
                     ))
                 }
