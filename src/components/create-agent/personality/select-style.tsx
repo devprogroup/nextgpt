@@ -36,7 +36,7 @@ interface PropType {
 
 export default function SelectStyle({ onUseStyle }: PropType) {
     const [selectedStyle, setSelectedStyle] = useState<string>('');
-    const communicationStyles = useSelector((state: StoreType) => state.agent.personality.communicationStyles);
+    const communicationStyles = useSelector((state: StoreType) => state.agent.personality?.communicationStyles);
     const [abstractness, setAbstractness] = useState<string>('S');
     const [specificity, setSpecificity] = useState<string>('General');
     const [outputLength, setOutputLength] = useState<string>('S');
@@ -48,7 +48,7 @@ export default function SelectStyle({ onUseStyle }: PropType) {
         nonsense: [0]
     })
 
-    return (
+    return communicationStyles ? (
         <div className="flex flex-col h-full">
             <div className="flex flex-grow">
                 <div className="w-[280px] nextgpt__bg_surface-light border-r nextgpt__border_stroke-light p-4 relative shadow-[inset_-2px_0px_4px_rgba(0,0,0,0.02)]">
@@ -242,5 +242,5 @@ export default function SelectStyle({ onUseStyle }: PropType) {
             </div>
             
         </div>
-    )
+    ) : null
 }
