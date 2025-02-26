@@ -8,32 +8,30 @@ import { StoreType } from "@/types"
 import { MdClose } from "react-icons/md"
 
 export default function ProgressHeader() {
-    const step = useSelector((state:StoreType)=>state.agent.step)
+    const step = useSelector((state: StoreType) => state.agent.step)
     const dispatch = useDispatch()
 
     return (
-        <div className="nextgpt__container border-b border-gray-200">
-            <div className="min-h-[80px] flex items-center justify-center relative">
-                <h3 className="absolute left-0 text-[16px] nextgpt__font_semibold">Creating an agent</h3>
-                <div className="flex items-center space-x-[12px]">
-                    {
-                        STEPS.map((it, i)=>(
-                            <div
-                                onClick={()=>dispatch(setStep(i))}
-                                className={`p-2 cursor-pointer rounded-full flex items-center ${step === i ? 'nextgpt__bg_surface' : 'border border-[#EEEFF1]'}`} key={i}>
-                                <span className="h-4 text-[11px] w-4 flex justify-center items-center bg-[#868B98] text-white rounded-full"><span>{i+1}</span></span>
-                                { step === i && <span className="block mx-1 capitalize mx-1 leading-none">{it.key}</span>}
-                            </div>
-                        ))
-                    }
+        <div className="nextgpt__container">
+            <h3 className="absolute left-0 text-[16px] nextgpt__font_semibold">Creating an agent</h3>
+            <div className="flex items-center space-x-[12px]">
+                {
+                    STEPS.map((it, i) => (
+                        <div
+                            onClick={() => dispatch(setStep(i))}
+                            className={`p-2 cursor-pointer rounded-full flex items-center ${step === i ? 'nextgpt__bg_surface' : 'border border-[#EEEFF1]'}`} key={i}>
+                            <span className="h-4 text-[11px] w-4 flex justify-center items-center bg-[#868B98] text-white rounded-full"><span>{i + 1}</span></span>
+                            {step === i && <span className="block mx-1 capitalize mx-1 leading-none">{it.key}</span>}
+                        </div>
+                    ))
+                }
+            </div>
+            <div className="absolute right-0 flex items-center">
+                <div className="rounded-full border border-[#EEEFF1] h-[32px] px-3 flex items-center mr-2">
+                    <i className="h-2 w-2 rounded-full nextgpt__bg_secondary block mr-2"></i>
+                    <span className="nextgpt__text-color_sub">Progress saved</span>
                 </div>
-                <div className="absolute right-0 flex items-center">
-                    <div className="rounded-full border border-[#EEEFF1] h-[32px] px-3 flex items-center mr-2">
-                        <i className="h-2 w-2 rounded-full nextgpt__bg_secondary block mr-2"></i>
-                        <span className="nextgpt__text-color_sub">Progress saved</span>
-                    </div>
-                    <button className="rounded-full h-[32px] w-[32px] nextgpt__bg_neutral-50 text-[#868B98] flex justify-center items-center"><MdClose /></button>
-                </div>
+                <button className="rounded-full h-[32px] w-[32px] nextgpt__bg_neutral-50 text-[#868B98] flex justify-center items-center"><MdClose /></button>
             </div>
         </div>
     )

@@ -25,16 +25,19 @@ const CreateAgent: React.FC = () => {
         if (file) {
             dispatch(setIdentity({
                 avatarUrl: URL.createObjectURL(file)
-            })) 
+            }))
         }
     }
 
     return (
-        
-            <div className="h-screen w-screen flex flex-col">
+
+        <div className="h-screen w-screen flex flex-col">
+            <div className="border-b border-gray-200 h-[80px] fixed top-0 left-0 right-0">
                 <Header />
-                <div className="nextgpt__container flex-grow py-12">
-                    <div className="grid gap-16 md:grid-cols-2 h-full">
+            </div>
+            <div className="h-[calc(100vh-80px)] mt-[80px] overflow-y-auto">
+                <div className="h-full nextgpt__container py-12">
+                    <div className="grid gap-16 md:grid-cols-2 h-full w-full">
                         <div className="space-y-10 flex flex-col">
                             <div className="space-y-10 flex-grow">
                                 {step !== 5 && (
@@ -43,7 +46,7 @@ const CreateAgent: React.FC = () => {
                                         <p className="nextgpt__subtitle">{STEPS[step].subtitle}</p>
                                     </div>
                                 )}
-                                    
+
                                 {step === 0 && <Identity />}
                                 {step === 1 && <Task />}
                                 {step === 2 && <Knowledge />}
@@ -55,7 +58,7 @@ const CreateAgent: React.FC = () => {
                                 valid={true}
                                 canSkip={step === 3}
                             />
-                            </div>
+                        </div>
                         <input type="file" accept="image/*" hidden id="avatar-selector" onChange={onAvatarChange} />
 
                         {/* Preview Card */}
@@ -67,12 +70,12 @@ const CreateAgent: React.FC = () => {
                                             src={agent.identity.avatarUrl || ''} alt="Avatar" className="rounded-full h-24 h-24" />
                                     ) : (
                                         <div className="flex h-24 w-24 items-center justify-center rounded-full nextgpt__bg_neutral-100 text-3xl font-medium">
-                                        {agent.identity.firstName[0]}
-                                        {agent.identity.lastName[0]}
-                                    </div>
+                                            {agent.identity.firstName[0]}
+                                            {agent.identity.lastName[0]}
+                                        </div>
                                     )}
-                                    
-                                    
+
+
                                     <div className="text-center tracking-[-0.01em]">
                                         <h3 className="text-[32px] nextgpt__font_semibold">
                                             {agent.identity.firstName ? (<span>{agent.identity.firstName}</span>) : <span className="nextgpt__text-color_placeholder">John</span>}
@@ -97,7 +100,7 @@ const CreateAgent: React.FC = () => {
                                                     <p className="nextgpt__text-color_sub">Agent type</p>
                                                     <p className="">{agent.task.type}</p>
                                                 </div>
-                                                
+
                                             </div>
                                         </>
                                     )}
@@ -107,7 +110,10 @@ const CreateAgent: React.FC = () => {
                     </div>
                 </div>
             </div>
-        
+
+            
+        </div>
+
     )
 }
 

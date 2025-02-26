@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import BottomNav from '@/components/create-agent/common/bottom-nav';
 import { setPersonality } from '@/store/agent';
 import CommunicationStyle from './communication-style';
 
