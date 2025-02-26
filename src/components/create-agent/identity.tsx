@@ -33,7 +33,7 @@ export default function AgentForm() {
         'Interviewer',
     ]
     const onClickRole = (role: string) => {
-        if (role === identity.role) {
+        if (role === identity?.role) {
             dispatch(setIdentity({ role: '' }))
         } else {
             dispatch(setIdentity({ role }))
@@ -52,6 +52,7 @@ export default function AgentForm() {
     const onUploadClick = () => {
         document.getElementById('avatar-selector')?.click()
     }
+    if (!identity) return null
     return (
         <div className="space-y-8">
             {/* Name Fields */}

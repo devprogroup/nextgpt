@@ -9,7 +9,7 @@ import { StoreType } from "@/types";
 import { TaskModal } from "./task-modal";
 import { TaskItemType } from "./types";
 import { Circuit, Notebook, Listing, HeadPhone } from "../svg"
-import UploadCsv from "./collector/upload-csv";
+
 import Actor from "./actor";
 import Collector from "./collector";
 

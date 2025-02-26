@@ -83,7 +83,7 @@ const SubscriptionModal: React.FC<PropType> = ({ isOpen, close }) => {
             <Modal
                 isOpen={isOpen}
                 close={close}
-                title="Gym subscriptions"
+                title="Aritable"
                 titleIcon={<span className="bg-gray-400 flex items-center justify-center p-0.5 rounded"><TopicIcon width={24} height={24} /></span>}
             >
                 <div className="grid grid-cols-2 border-t border-b border-gray-200 min-h-[680px] max-w-[1200px]">

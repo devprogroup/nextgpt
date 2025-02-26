@@ -48,40 +48,47 @@ export interface CommunicationStyleType {
     key: string,
     name: string,
 }
-export interface AgentStateType{
+
+export interface IdentityType {
+    firstName: string,
+    lastName: string,
+    role: string,
+    organization: string,
+    organizationDescription: string,
+    llm: string,
+    avatarUrl: string | null
+}
+
+export interface TaskType {
+    purpose: string,
+    activities: string,
+    type: TaskTypeType,
+    script: ScriptType | null,
+    collections: CollectionType[] | null
+}
+
+export interface KnowledgeType {
+    alternativeType: 'escalate' | 'offer_alternative' | 'other' | null,
+    alternatives: KnowledgeAlternativeType[],
+    alternativeDescription: string,
+    parameters: string[],
+    topics: TopicType[],
+}
+export interface PersonalityType {
+blacklist: string[],
+communicationStyles: {
+    preset: CommunicationStyleType[],
+    custom: CommunicationStyleType[]
+}
+
+}
+export interface AgentStateType {
     step: number,
-    identity: {
-        firstName: string,
-        lastName: string,
-        role: string,
-        organization: string,
-        organizationDescription: string,
-        llm: string,
-        avatarUrl: string | null
-    },
-    task: {
-        purpose: string,
-        activities: string,
-        type: TaskTypeType,
-        script: ScriptType | null,
-        collections: CollectionType[] | null
-    },
-    knowledge: {
-        alternativeType: 'escalate' | 'offer_alternative' | 'other' | null,
-        alternatives: KnowledgeAlternativeType[],
-        alternativeDescription: string,
-        parameters: string[],
-        topics: TopicType[],
-    },
-    skills: SkillType[],
-    personality: {
-        blacklist: string[],
-        communicationStyles: {
-            preset: CommunicationStyleType[],
-            custom: CommunicationStyleType[]
-        }
-        
-    }
+    identity: IdentityType | null,
+    task: TaskType | null,
+    knowledge: KnowledgeType | null,
+    skills: SkillType[] | null,
+    personality: PersonalityType | null
 }
 
 export interface StoreType {
